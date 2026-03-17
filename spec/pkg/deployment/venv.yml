@@ -1,0 +1,55 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- action: directory-state-discard-and-clear
+  enabled-by: true
+  output-name: .
+- action: remove-tree
+  enabled-by: true
+  missing-ok: true
+  path: ${.:/directory}/.venv
+- action: subprocess
+  command:
+  - uv
+  - sync
+  - --no-managed-python
+  enabled-by: true
+  env:
+  - action: unset
+    name: VIRTUAL_ENV
+    value: null
+  expected-return-code: 0
+  working-directory: ${.:/directory}
+- action: directory-state-add-files
+  enabled-by: true
+  output-name: .
+  path: ${.:/directory}
+  pattern: '.venv/**/*'
+- action: directory-state-add-files
+  enabled-by: true
+  output-name: .
+  path: ${.:/directory}
+  pattern: uv.lock
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+directory: ${.:/component/deployment-directory}
+directory-state-type: explicit
+enabled-by: true
+files: []
+hash: null
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: source
+  role: input
+  uid: ../source/venv
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+params: {}
+pkg-type: directory-state
+type: pkg

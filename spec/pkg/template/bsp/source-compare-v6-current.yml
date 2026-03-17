@@ -1,0 +1,943 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  arch: ${.:/component/arch}
+  base-directory-map:
+  - source: $${/pkg/source/rtems-v6:/directory}/spec
+    target: $${/pkg/source/rtems-v6:/directory}
+  bsp: ${.:/bsp}
+  build-spec-directories:
+  - $${/pkg/source/rtems-v6:/directory}/spec/build
+  build-uids:
+  - /cpukit/librtemscpu
+  copyrights-by-license: {}
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-v6-compare-current
+  directory-state-type: repository-subset
+  enabled-by:
+    and:
+    - RTEMS_QUAL
+    - compare-sources
+  enabled-set-extension:
+  - enable: INSTALL_LEGACY_MAKEFILES
+    enabled-by: true
+  extra-files:
+  - bsps/shared/doxygen.h
+  - bsps/shared/cache/cacheimpl.h
+  - bsps/shared/dev/clock/clockimpl.h
+  - bsps/sparc/leon3/include/tm27.h
+  - bsps/sparc/shared/doxygen.h
+  - cpukit/compiler-rt/lib/builtins/int_div_impl.inc
+  - cpukit/compiler-rt/lib/builtins/int_endianness.h
+  - cpukit/compiler-rt/lib/builtins/int_lib.h
+  - cpukit/compiler-rt/lib/builtins/int_types.h
+  - cpukit/compiler-rt/lib/builtins/int_util.h
+  - cpukit/doxygen.h
+  - cpukit/doxygen/appl-config.h
+  - cpukit/doxygen/build.h
+  - cpukit/doxygen/hash-algorithms.h
+  - cpukit/doxygen/mainpage.h
+  - cpukit/doxygen/top-level-groups.h
+  - cpukit/libc/string/local.h
+  - cpukit/libmisc/cpuuse/cpuuseimpl.h
+  - cpukit/score/cpu/sparc/syscall.h
+  - cpukit/score/src/opt_compat.h
+  - cpukit/score/src/opt_ffclock.h
+  - cpukit/score/src/opt_ntp.h
+  files: []
+  hash: null
+  include-test-header: false
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/rtems-v6
+  - file-to-review:
+      bsps/include/bsp/fatal.h:
+      - bsp-fatal
+      - leon3-irq
+      bsps/include/bsp/irq-generic.h: irq-record
+      bsps/include/grlib/ahbstat-regs.h: grlib
+      bsps/include/grlib/ahbtrace-regs.h: grlib
+      bsps/include/grlib/apbuart-regs.h: grlib
+      bsps/include/grlib/dsu4-regs.h: grlib
+      bsps/include/grlib/ftmctrl-regs.h: grlib
+      bsps/include/grlib/gptimer-regs.h: grlib
+      bsps/include/grlib/gr1553b-regs.h: grlib
+      bsps/include/grlib/grcan-regs.h: grlib
+      bsps/include/grlib/grclkgate-regs.h: grlib
+      bsps/include/grlib/grethgbit-regs.h: grlib
+      bsps/include/grlib/grgpio-regs.h: grlib
+      bsps/include/grlib/griommu-regs.h: grlib
+      bsps/include/grlib/grpci2-regs.h: grlib
+      bsps/include/grlib/grspw2-regs.h: grlib
+      bsps/include/grlib/grspwrouter-regs.h: grlib
+      bsps/include/grlib/irqamp-regs.h: grlib
+      bsps/include/grlib/l2cache-regs.h: grlib
+      bsps/include/grlib/l4stat-regs.h: grlib
+      bsps/include/grlib/memscrub-regs.h: grlib
+      bsps/include/grlib/mmctrl-regs.h: grlib
+      bsps/include/grlib/spictrl-regs.h: grlib
+      bsps/include/grlib/spwpnp-regs.h: grlib
+      bsps/include/grlib/spwrmap-regs.h: grlib
+      bsps/include/grlib/spwtdp-regs.h: grlib
+      bsps/shared/cache/cacheimpl.h: mark-arg-as-unused
+      bsps/shared/grlib/uart/apbuart_polled.c: dev-io
+      bsps/shared/irq/irq-entry-remove.c: irq-record
+      bsps/shared/irq/irq-generic.c: irq-record
+      bsps/shared/irq/irq-handler-iterate.c: irq-record
+      bsps/sparc/leon3/clock/ckinit.c: leon3-dsu
+      bsps/sparc/leon3/include/bsp.h: deprecate-bsp-irq-api
+      bsps/sparc/leon3/include/bsp/gr740-bootstrap-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/gr740-iopll-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/gr740-thsens-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/irqimpl.h: leon3-irq
+      bsps/sparc/leon3/include/bsp/leon3.h:
+      - leon3-irq
+      - leon3-dsu
+      bsps/sparc/leon3/start/bspclean.c: leon3-shutdown
+      bsps/sparc/leon3/start/cpucounter.c: leon3-dsu
+      bsps/sparc/leon3/start/eirq.c: leon3-irq
+      bsps/sparc/shared/irq/bsp_isr_handler.c: leon3-irq
+      cpukit/compiler-rt/lib/builtins/bswapdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/bswapsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/clzdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/clzsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ctzdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ctzsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/divdi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ffsdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ffssi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_div_impl.inc: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_endianness.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_lib.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_types.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_util.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/moddi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/paritydi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/paritysi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/popcountdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/popcountsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/udivdi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/udivmoddi4.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/umoddi3.c: compiler-builtins
+      cpukit/dev/iorelax.c: dev-io
+      cpukit/doxygen/appl-config.h: doxygen-appl-config
+      cpukit/doxygen/build.h: doxygen
+      cpukit/doxygen/hash-algorithms.h: hash-algorithms
+      cpukit/include/machine/_kernel_param.h: doxygen
+      cpukit/include/machine/_kernel_time.h: doxygen
+      cpukit/include/machine/_kernel_types.h: doxygen
+      cpukit/include/rtems/confdefs.h: face
+      cpukit/include/rtems/confdefs/extensions.h: irq-record
+      cpukit/include/rtems/confdefs/face.h: face
+      cpukit/include/rtems/confdefs/inittask.h: noinit-data
+      cpukit/include/rtems/confdefs/libio.h: jaffs2
+      cpukit/include/rtems/confdefs/newlib.h: reent-tls
+      cpukit/include/rtems/confdefs/percpu.h: idle-task-storage
+      cpukit/include/rtems/confdefs/scheduler.h: warning-no-member
+      cpukit/include/rtems/confdefs/threads.h:
+      - idle-task-storage
+      - reent-tls
+      - warning-zero-length-array
+      cpukit/include/rtems/confdefs/wkspace.h: idle-task-storage
+      cpukit/include/rtems/config.h:
+      - idle-task-storage
+      - absolute-symbols
+      - doxygen-appl-config
+      - build-options-header
+      cpukit/include/rtems/counter.h: cpu-counter-diff
+      cpukit/include/rtems/dev/io.h: dev-io
+      cpukit/include/rtems/libcsupport.h: reent-tls
+      cpukit/include/rtems/linkersets.h: doxygen
+      cpukit/include/rtems/malloc.h: doxygen
+      cpukit/include/rtems/printer.h: no-rtems-printer
+      cpukit/include/rtems/rtems/config.h: doxygen-appl-config
+      cpukit/include/rtems/rtems/intr.h:
+      - doxygen-appl-config
+      - build-options-header
+      - formatting
+      cpukit/include/rtems/rtems/mainpage.h: no-mainpage
+      cpukit/include/rtems/rtems/partdata.h: mpci-hide-impl
+      cpukit/include/rtems/rtems/tasks.h: doxygen
+      cpukit/include/rtems/rtems/types.h: build-options-header
+      cpukit/include/rtems/scheduler.h: doxygen
+      cpukit/include/rtems/score/assert.h: unreachable
+      cpukit/include/rtems/score/atomic.h: no-cpu-atomic
+      cpukit/include/rtems/score/basedefs.h:
+      - unreachable
+      - absolute-symbols
+      - formatting
+      cpukit/include/rtems/score/chain.h: doxygen
+      cpukit/include/rtems/score/coremsgimpl.h: inline
+      cpukit/include/rtems/score/cpustdatomic.h: no-cpu-atomic
+      cpukit/include/rtems/score/interr.h:
+      - idle-task-storage
+      - strict-c
+      cpukit/include/rtems/score/isr.h: absolute-symbols
+      cpukit/include/rtems/score/memory.h: noinit-data
+      cpukit/include/rtems/score/mrspimpl.h: scheduler-index
+      cpukit/include/rtems/score/objectdata.h: noinit-data
+      cpukit/include/rtems/score/objectimpl.h: unlimited-objects
+      cpukit/include/rtems/score/percpu.h: warning-zero-length-array
+      cpukit/include/rtems/score/priority.h: scheduler-uni
+      cpukit/include/rtems/score/priorityimpl.h:
+      - explicit-smp-code
+      - cxx-compatibility
+      cpukit/include/rtems/score/processormask.h:
+      - bitset-mask
+      - bitset-newlib
+      - doxygen
+      cpukit/include/rtems/score/profiling.h: cpu-counter-diff
+      cpukit/include/rtems/score/protectedheap.h: unused-protected-heap
+      cpukit/include/rtems/score/scheduleredfimpl.h:
+      - scheduler-uni
+      - cxx-compatibility
+      cpukit/include/rtems/score/schedulerimpl.h: scheduler-uni
+      cpukit/include/rtems/score/schedulerpriority.h: warning-zero-length-array
+      cpukit/include/rtems/score/schedulerpriorityimpl.h: scheduler-uni
+      cpukit/include/rtems/score/schedulersimpleimpl.h: scheduler-uni
+      cpukit/include/rtems/score/scheduleruniimpl.h: scheduler-uni
+      cpukit/include/rtems/score/smplockstats.h: cpu-counter-diff
+      cpukit/include/rtems/score/stack.h: idle-task-storage
+      cpukit/include/rtems/score/thread.h:
+      - idle-task-storage
+      - thread-registers
+      - noinit-data
+      - reent-tls
+      cpukit/include/rtems/score/threaddispatch.h:
+      - warning-uninitialized
+      - inline
+      cpukit/include/rtems/score/threadimpl.h:
+      - scheduler-index
+      - pthread-cancel
+      - thread-join
+      - explicit-smp-code
+      - inline
+      cpukit/include/rtems/score/timecounter.h: ntp
+      cpukit/include/rtems/score/tls.h:
+      - task-storage
+      - absolute-symbols
+      cpukit/include/rtems/score/todimpl.h: ntp
+      cpukit/include/rtems/sysinit.h: doxygen
+      cpukit/include/sha224.h: hash-algorithms
+      cpukit/include/sha256.h: hash-algorithms
+      cpukit/include/sys/timepps.h:
+      - ntp
+      - cxx-compatibility
+      cpukit/include/sys/timetc.h:
+      - ntp
+      - cxx-compatibility
+      cpukit/libcsupport/src/alloconly.c: alloconly
+      cpukit/libcsupport/src/malloc_p.h: alloconly
+      cpukit/posix/src/clocknanosleep.c: clocknanosleep
+      cpukit/rtems/src/clockgettickspersecond.c: clock-directives
+      cpukit/rtems/src/clockgettickssinceboot.c: clock-directives
+      cpukit/rtems/src/partcreate.c: formatting
+      cpukit/rtems/src/rtemsbuildname.c: rtems-build-name
+      cpukit/rtems/src/schedulerident.c: formatting
+      cpukit/rtems/src/taskdelete.c: thread-join
+      cpukit/rtems/src/timerserver.c: scheduler-uni
+      cpukit/score/cpu/no_cpu/cpuidle.c: gcc-pr108658
+      cpukit/score/cpu/sparc/cpu.c: task-storage
+      cpukit/score/cpu/sparc/cpu_asm.S:
+      - sparc-start-multitasking
+      - leon3-dsu
+      cpukit/score/cpu/sparc/include/rtems/score/cpu.h:
+      - sparc-start-multitasking
+      - leon3-dsu
+      cpukit/score/cpu/sparc/include/rtems/score/cpuatomic.h: no-cpu-atomic
+      cpukit/score/cpu/sparc/include/rtems/score/cpuimpl.h:
+      - task-storage
+      - leon3-dsu
+      - tls-idle
+      - tls-libdl
+      - inline
+      cpukit/score/cpu/sparc/include/rtems/score/sparcimpl.h: leon3-dsu
+      cpukit/score/cpu/sparc/sparc-counter-asm.S: leon3-dsu
+      cpukit/score/src/chainnodecount.c: libtest
+      cpukit/score/src/isr.c: absolute-symbols
+      cpukit/score/src/kern_tc.c: ntp
+      cpukit/score/src/objectinitializeinformation.c: unused-includes
+      cpukit/score/src/percpuasm.c: percpuasm
+      cpukit/score/src/rbtreeappend.c: smp-only
+      cpukit/score/src/rbtreeprepend.c: smp-only
+      cpukit/score/src/rbtreereplace.c: smp-only
+      cpukit/score/src/scheduleredfreleasejob.c: smp-only
+      cpukit/score/src/schedulerpriorityblock.c: scheduler-uni
+      cpukit/score/src/schedulerprioritychangepriority.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityschedule.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityunblock.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityyield.c: scheduler-uni
+      cpukit/score/src/smpbarrierwait.c: libtest
+      cpukit/score/src/stackallocatorforidle.c: idle-task-storage
+      cpukit/score/src/threadchangepriority.c: explicit-smp-code
+      cpukit/score/src/threadcreateidle.c:
+      - idle-task-storage
+      - tls-idle
+      cpukit/score/src/threadinitialize.c:
+      - thread-join
+      - task-storage
+      - scheduler-index
+      cpukit/score/src/threadqops.c:
+      - explicit-smp-code
+      - formatting
+      cpukit/score/src/threadqtimeout.c: threadq-timeouts
+      cpukit/score/src/threadrestart.c:
+      - thread-join
+      - pthread-cancel
+      cpukit/score/src/tlsallocsize.c:
+      - task-storage
+      - absolute-symbols
+      cpukit/score/src/userextiterate.c: unused-includes
+      cpukit/score/src/watchdogtick.c: explicit-smp-code
+    hash: null
+    label: SourceCompareV5V6
+    name: source-compare-current
+    renamed:
+      bsps/sparc/leon3/include/bsp/gr740-bootstrap-regs.h: bsps/include/grlib/grgprbank-regs.h
+      bsps/sparc/leon3/include/bsp/gr740-iopll-regs.h: bsps/include/grlib/grgpreg-regs.h
+      bsps/sparc/leon3/include/bsp/gr740-thsens-regs.h: bsps/include/grlib/gr740thsens-regs.h
+      cpukit/dev/iorelax.c: cpukit/score/src/iorelax.c
+      cpukit/include/rtems/dev/io.h: cpukit/include/rtems/score/io.h
+      cpukit/doxygen/mainpage.h: cpukit/include/rtems/rtems/mainpage.h
+    reviews:
+      sparc-start-multitasking:
+        subject: Fix multitasking start for SPARC
+        text: |
+          This change fixed a potential stack corruption in uniprocessor
+          configurations during start multitasking.
+
+          The system initialization uses the interrupt stack.  A first level
+          interrupt shall never interrupt a context which uses the interrupt
+          stack.  Such a use would lead to stack corruption and undefined system
+          behaviour.  Unfortunately, in uniprocessor configurations this was the
+          case.  Multiprocessing was started using ``_CPU_Context_restore()``.
+          The caller of this function (``_Thread_Start_multitasking())`` uses the
+          interrupt stack.  Later we have in
+          :file:`cpukit/score/cpu/sparc/cpu_asm.S`:
+
+          .. code-block:: none
+
+              mov     %g1, %psr                     ! restore status register and
+                                                    ! **** ENABLE TRAPS ****
+
+              ld      [%o1 + G5_OFFSET], %g5        ! restore the global registers
+              ld      [%o1 + G7_OFFSET], %g7
+
+              ! Load thread specific ISR dispatch prevention flag
+              ld      [%o1 + ISR_DISPATCH_DISABLE_STACK_OFFSET], %o2
+              ! Store it to memory later to use the cycles
+
+              ldd     [%o1 + L0_OFFSET], %l0        ! restore the local registers
+              ldd     [%o1 + L2_OFFSET], %l2
+              ldd     [%o1 + L4_OFFSET], %l4
+              ldd     [%o1 + L6_OFFSET], %l6
+
+              ! Now restore thread specific ISR dispatch prevention flag
+              st      %o2, [%g6 + PER_CPU_ISR_DISPATCH_DISABLE]
+
+              ldd     [%o1 + I0_OFFSET], %i0        ! restore the input registers
+              ldd     [%o1 + I2_OFFSET], %i2
+              ldd     [%o1 + I4_OFFSET], %i4
+              ldd     [%o1 + I6_FP_OFFSET], %i6
+
+              ldd     [%o1 + O6_SP_OFFSET], %o6     ! restore the output registers
+
+          Between the *ENABLE TRAPS* and the restore of the output registers, we
+          still use the stack of the caller and interrupts may be enabled.  If an
+          interrupt happens in this code block, the interrupt stack is
+          concurrently used which may lead to a crash.
+
+          Fix this by adding a new function ``_SPARC_Start_multiprocessing()``
+          for uniprocessor configurations.  This function first sets the stack
+          pointer to use the stack of the heir thread.  See
+          $${/pkg/issue/rtems/4955:/name}.
+          This change was specifically implemented for QDP version 6.
+      scheduler-uni:
+        subject: Removal of PRIORITY_PSEUDO_ISR thread priority
+        text: |
+          For the uniprocessor schedulers, the special case logic for the
+          PRIORITY_PSEUDO_ISR priority was removed.  See $${/pkg/issue/rtems/2365:/name}.
+          This change was specifically implemented for QDP version 6.
+      grlib:
+        subject: GRLIB register blocks mainline integration and improvements
+        text: |
+          The register block specification was reviewed by the RTEMS Project.
+          The register block header file generator was modified to address
+          findings of the ISVV activity, see $${/pkg/issue/rtems/4842:/name}.  The GRLIB
+          register block specification was updated to address review comments
+          from Gaisler on the RTEMS development mailing list.
+          This change was specifically implemented for QDP version 6.
+      leon3-irq:
+        subject: LEON3 interrupt controller support mainline integration
+        text: |
+          The pre-qualified LEON3 interrupt controller support was integrated in
+          the RTEMS mainline.  As a result, review comments on the RTEMS mailing
+          list were addressed.  Findings of the ISVV activity were addressed, see
+          $${/pkg/issue/rtems/4850:/name}.
+          This change was specifically implemented for QDP version 6.
+      leon3-dsu:
+        subject: Use of Debug Support Unit (DSU) for clock driver and CPU counter on GR712RC
+        text: |
+          The clock driver and CPU counter support was simplified.  For the
+          GR712RC, the DSU time tag is now used by the clock driver and CPU
+          counter, $${/pkg/issue/rtems/4954:/name}.
+          This change was specifically implemented for QDP version 6.
+      leon3-shutdown:
+        subject: Simplify LEON3 BSP shutdown in SMP configurations
+        text: |
+          Busy wait loops and complicated shutdown procedures were removed.  This
+          change was specifically implemented for QDP version 6.
+      compiler-builtins:
+        subject: Implementation of compiler builtins
+        text: |
+          See section *Use of Externally Provided Items* in
+          $${/pkg/deployment/doc-package-manual:/cite}.  This change was
+          specifically implemented for QDP version 6.
+      clock-directives:
+        subject: Function implementations of Clock Manager directives
+        text: |
+          Two function implementations of Clock Manager directives were missing.
+          Validation tests were added accordingly.
+          This change was specifically implemented for QDP version 6.
+      task-storage:
+        subject: Improved thread-local storage implementation
+        text: |
+          The thread-local storage support was refactored to better support the
+          different implementation variants.  See $${/pkg/issue/rtems/3835:/name}
+          This change was specifically implemented for QDP version 6.
+      tls-idle:
+        subject: Thread-local storage should be usable once an idle thread exists
+        text: |
+          See $${/pkg/issue/rtems/4672:/name}.  This change was specifically implemented
+          for QDP version 6.
+      reent-tls:
+        subject: Usage of thread-local storage in Newlib
+        text: |
+          See $${/pkg/issue/rtems/4560:/name}.  This change was specifically implemented
+          for QDP version 6.
+      noinit-data:
+        subject: Usage of .noinit data
+        text: |
+          Some statically allocated data structures are explicitly initialized
+          during runtime.  These data structures do not need a zero
+          initialization during system initialization.  They were placed into
+          dedicated linker sections to avoid the superfluous zero initialization.
+          This reduces the system initialization time.  This change was
+          specifically implemented for QDP version 6.
+      pthread-cancel:
+        subject: Usage of PTHREAD_CANCELED for _Thread_Cancel()
+        text: |
+          The rtems_task_delete() directive is basically just a combined
+          pthread_cancel() and pthread_join().  In addition, it removes the
+          PTHREAD_DETACHED state.  The exit value returned by pthread_join() of
+          threads cancelled by rtems_task_delete() should reflect this by getting
+          a PTHREAD_CANCELED value instead of NULL which could be a normal exit
+          value.  See $${/pkg/issue/rtems/4680:/name}.
+          This change was specifically implemented for QDP version 6.
+      thread-join:
+        subject: Usage of priority inheritance for thread join
+        text: |
+          The thread cancel operation used a special case priority boosting
+          mechanism implemented by _Thread_Raise_real_priority().  The problem
+          was that this approach
+
+          * is not transitive,
+
+          * does not account for priority adjustments of the calling task
+            while waiting for the join,
+
+          * does not support clustered scheduling, and
+
+          * does not detect deadlocks.
+
+          All these problems were fixed by using a priority inheritance thread
+          queue for the join operation.  See $${/pkg/issue/rtems/4678:/name}.
+          This change was specifically implemented for QDP version 6.
+      cpu-counter-diff:
+        subject: Removal of _CPU_Counter_difference()
+        text: |
+          See $${/pkg/issue/rtems/3456:/name}.
+          This change was specifically implemented for QDP version 6.
+      scheduler-index:
+        subject: Assert scheduler index validity
+        text: |
+          Findings of the ISVV activity were addressed, see
+          $${/pkg/issue/rtems/4844:/name}.
+          This change was specifically implemented for QDP version 6.
+      rtems-build-name:
+        subject: Fix typo in rtems_build_name() definition
+        text: |
+          This change was specifically implemented for QDP version 6.
+      gcc-pr108658:
+        subject: Workaround for GCC PR108658
+        text: |
+          This change was specifically implemented for QDP version 6.
+      percpuasm:
+        subject: Static assertions
+        text: |
+          The :file:`percpuasm.c` source file contains static assertions to
+          verify CPU port properties.
+          This change was specifically implemented for QDP version 6.
+      explicit-smp-code:
+        subject: Explicit code for SMP configurations
+        text: |
+          Conditional expressions with inline functions are not optimized away if
+          optimization is disabled.  Avoid such expressions to prevent dead
+          branches.  It helps also during code review to immediately see if a
+          loop is used or not.
+          This change was specifically implemented for QDP version 6.
+      libtest:
+        subject: Move of test support
+        text: |
+          Files used only by the test support were removed from the pre-qualified
+          libraries.  This change was specifically implemented for QDP version 6.
+      smp-only:
+        subject: Move of SMP-only files
+        text: |
+          In uniprocessor configurations, files used only in SMP configurations
+          were removed from the pre-qualified libraries.  This change was
+          specifically implemented for QDP version 6.
+      build-options-header:
+        subject: Usage of build options
+        text: |
+          Header files using build options include now ``#include
+          <rtems/score/cpuopts.h>`` explicitly.
+          This change was specifically implemented for QDP version 6.
+      doxygen:
+        subject: Doxygen documentation improvements
+        text: |
+          Build system provided files were documented.  File documentation was
+          added.  Conditional code was restructured to yield better Doxygen
+          documentation (for example Doxygen does not stop processing a file if
+          an ``#errror`` directive would abort the C preprocessing).
+          Implementation parts were moved out of Doxygen group scopes.  Items
+          were documented.  See also $${/pkg/issue/rtems/3707:/name}.
+          This change was specifically implemented for QDP version 6.
+      doxygen-appl-config:
+        subject: Documentation update for application configuration options
+        text: |
+          The Doxygen documentation for application configuration options was
+          regenerated from the specification.  See $${/pkg/issue/rtems/3994:/name}.
+          This change was specifically implemented for QDP version 6.
+      no-rtems-printer:
+        subject: Removal of not pre-qualified header <rtems/printer.h>
+        text: |
+          This change was specifically implemented for QDP version 6.
+      no-mainpage:
+        subject: Removal of duplicate Doxygen main page
+        text: |
+          This change was specifically implemented for QDP version 6.
+      alloconly:
+        subject: Simplification of pre-qualified memory allocation support
+        text: |
+          Changes in the build system support for the pre-qualfied only build
+          enabled a simplified memory allocation implementation.  This change was
+          specifically implemented for QDP version 6.
+      mark-arg-as-unused:
+        subject: Unused arguments
+        text: |
+          Findings of the ISVV activity were addressed, see
+          $${/pkg/issue/rtems/4862:/name}.
+          This change was specifically implemented for QDP version 6.
+      mpci-hide-impl:
+        subject: Hide MPCI implementation details
+        text: |
+          This improves the standard compatibility of API headers.  It fixes
+          errors like this if RTEMS_MULTIPROCESSING is enabled.
+      irq-record:
+        subject: Event recording support for interrupt service routines
+        text: |
+          Servicing interrupts is an important job of real-time applications.
+          Event recording helps to analyze the dynamics of an application.
+          Support for event recording of interrupt service routines was added.
+      idle-task-storage:
+        subject: Support for idle thread stack allocator
+        text: |
+          See $${/pkg/issue/rtems/3835:/name} and $${/pkg/issue/rtems/4524:/name}.
+      absolute-symbols:
+        subject: Removal of usage of absolute symbols
+        text: |
+          See $${/pkg/issue/rtems/4953:/name}.
+      threadq-timeouts:
+        subject: Use right clock for threadq timeouts
+        text: |
+          Clocks CLOCK_REALTIME and CLOCK_MONOTONIC are now used for relative
+          thread queue timeouts instead of CLOCK_REALTIME_COARSE and
+          CLOCK_MONOTONIC_COARSE.  This fixes an issue with clock_nanosleep() in
+          combination with clock_gettime().  See $${/pkg/issue/rtems/4669:/name}.
+      tls-libdl:
+        subject: Thread-local storage support for libdl
+        text: |
+          See $${/pkg/issue/rtems/4920:/name}.
+      hash-algorithms:
+        subject: Synchronization of hash algorithms with FreeBSD
+        text: |
+          The implementation of hash algorithms was synchronized with FreeBSD to
+          address Coverity Scan static analyzer findings.  See
+          $${/pkg/issue/rtems/3719:/name}.
+      ntp:
+        subject: Support for NTP and PPS
+        text: |
+          Support for $${/glossary/ntp:/term} and $${/glossary/pps:/term} was
+          added.  The PPS support was synchronized with FreeBSD.  For the
+          pre-qualified feature set of RTEMS, the PPS support was disabled
+          through the ``RTEMS_PPS_SYNC`` build option.  See
+          $${/pkg/issue/rtems/2348:/name} and $${/pkg/issue/rtems/2349:/name}.
+      clocknanosleep:
+        subject: Fix for relative CLOCK_REALTIME sleep
+        text: |
+          A relative CLOCK_REALTIME time out shall not be affected by
+          CLOCK_REALTIME changes through clock_settime().  Since our
+          CLOCK_REALTIME is basically just CLOCK_MONOTONIC plus an offset, we can
+          simply use the CLOCK_MONOTONIC watchdog for relative CLOCK_REALTIME
+          time outs.
+          See $${/pkg/issue/rtems/4690:/name}.
+      thread-registers:
+        subject: Move of Thread_Control::Registers member
+        text: |
+          See $${/pkg/issue/rtems/3835:/name}.
+      deprecate-bsp-irq-api:
+        subject: Deprecated BSP-specific interrupt API
+        text: |
+          The BSP-specific interrupt API was deprecated, see
+          $${/pkg/issue/rtems/3269:/name}.
+      bsp-fatal:
+        subject: Fatal BSP error code changes
+        text: |
+          Fatal BSP error codes were added or removed.  These are
+          implementation-specific interface changes.
+      no-cpu-atomic:
+        subject: Removal of CPU port specific atomic operations support
+        text: |
+          All CPU ports used the same implementation.
+      dev-io:
+        subject: Move of IO support functions
+        text: |
+          Some IO support functions were moved from ``#include
+          <rtems/score/io.h>`` to ``#include <rtems/dev/io.h>``.
+      jaffs2:
+        subject: Configuration option for JAFFS2
+        text: |
+          See $${/pkg/issue/rtems/4961:/name}.
+      face:
+        subject: Configuration option for FACE Technical Standard
+        text: |
+          See $${/pkg/issue/rtems/4691:/name}.
+      cxx-compatibility:
+        subject: Improved C++ compatibility
+        text: |
+          See $${/pkg/issue/rtems/4706:/name}.
+      warning-uninitialized:
+        subject: Warning fixes involving uninitialized variables
+        text: |
+          See $${/pkg/issue/rtems/4662:/name}.
+      warning-no-member:
+        subject: Warning fixes involving structures with no members
+        text: |
+          See $${/pkg/issue/rtems/4662:/name}.
+      warning-zero-length-array:
+        subject: Warning fixes involving flexible array members
+        text: |
+          See $${/pkg/issue/rtems/4662:/name}.
+      strict-c:
+        subject: Use standard C
+        text: |
+          Some code blocks were changed to strictly follow the C standard.  See
+          $${/pkg/issue/rtems/4662:/name}.
+      unreachable:
+        subject: Avoid cyclic header file dependency involving RTEMS_UNREACHABLE()
+        text: |
+          See $${/pkg/issue/rtems/4900:/name}.
+      formatting:
+        subject: Formatting improvements
+        text: |
+          The format of code blocks was changed for better readability or to be
+          in line with the coding standard.
+      unlimited-objects:
+        subject: Fix for unlimited objects support
+        text: |
+          See $${/pkg/issue/rtems/4677:/name}.
+      bitset-mask:
+        subject: Fix _Processor_mask_To_uint32_t()
+        text: |
+          The ``_Processor_mask_To_uint32_t()`` function was changed to correctly
+          calculate the array index and shift value.  The bugs had no impact yet
+          since this function was always called with a zero value for the index
+          in RTEMS.
+      bitset-newlib:
+        subject: Account for <sys/bitset.h> API changes
+        text: |
+          See $${/pkg/issue/rtems/4667:/name}.
+      inline:
+        subject: Removal of RTEMS_INLINE_ROUTINE
+        text: |
+          The textual replacement of ``RTEMS_INLINE_ROUTINE`` to ``static
+          inline`` was done.  The use of standard C simplifies the Doxygen
+          documentation generation and use of static analyzers.  See
+          $${/pkg/issue/rtems/3935:/name}.
+      unused-protected-heap:
+        subject: Removal of unused protected heap functions
+        text: |
+          See $${/pkg/issue/rtems/4909:/name}.
+      unused-includes:
+        subject: Removal of unused header file includes
+        text: |
+          Some superfluous header file includes were removed.
+    file-to-review:
+      bsps/include/bsp/fatal.h:
+      - bsp-fatal
+      - leon3-irq
+      bsps/include/bsp/irq-generic.h: irq-record
+      bsps/include/grlib/ahbstat-regs.h: grlib
+      bsps/include/grlib/ahbtrace-regs.h: grlib
+      bsps/include/grlib/apbuart-regs.h: grlib
+      bsps/include/grlib/dsu4-regs.h: grlib
+      bsps/include/grlib/ftmctrl-regs.h: grlib
+      bsps/include/grlib/gptimer-regs.h: grlib
+      bsps/include/grlib/gr1553b-regs.h: grlib
+      bsps/include/grlib/grcan-regs.h: grlib
+      bsps/include/grlib/grclkgate-regs.h: grlib
+      bsps/include/grlib/grethgbit-regs.h: grlib
+      bsps/include/grlib/grgpio-regs.h: grlib
+      bsps/include/grlib/griommu-regs.h: grlib
+      bsps/include/grlib/grpci2-regs.h: grlib
+      bsps/include/grlib/grspw2-regs.h: grlib
+      bsps/include/grlib/grspwrouter-regs.h: grlib
+      bsps/include/grlib/irqamp-regs.h: grlib
+      bsps/include/grlib/l2cache-regs.h: grlib
+      bsps/include/grlib/l4stat-regs.h: grlib
+      bsps/include/grlib/memscrub-regs.h: grlib
+      bsps/include/grlib/mmctrl-regs.h: grlib
+      bsps/include/grlib/spictrl-regs.h: grlib
+      bsps/include/grlib/spwpnp-regs.h: grlib
+      bsps/include/grlib/spwrmap-regs.h: grlib
+      bsps/include/grlib/spwtdp-regs.h: grlib
+      bsps/shared/cache/cacheimpl.h: mark-arg-as-unused
+      bsps/shared/grlib/uart/apbuart_polled.c: dev-io
+      bsps/shared/irq/irq-entry-remove.c: irq-record
+      bsps/shared/irq/irq-generic.c: irq-record
+      bsps/shared/irq/irq-handler-iterate.c: irq-record
+      bsps/sparc/leon3/clock/ckinit.c: leon3-dsu
+      bsps/sparc/leon3/include/bsp.h: deprecate-bsp-irq-api
+      bsps/sparc/leon3/include/bsp/gr740-bootstrap-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/gr740-iopll-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/gr740-thsens-regs.h: grlib
+      bsps/sparc/leon3/include/bsp/irqimpl.h: leon3-irq
+      bsps/sparc/leon3/include/bsp/leon3.h:
+      - leon3-irq
+      - leon3-dsu
+      bsps/sparc/leon3/start/bspclean.c: leon3-shutdown
+      bsps/sparc/leon3/start/cpucounter.c: leon3-dsu
+      bsps/sparc/leon3/start/eirq.c: leon3-irq
+      bsps/sparc/shared/irq/bsp_isr_handler.c: leon3-irq
+      cpukit/compiler-rt/lib/builtins/bswapdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/bswapsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/clzdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/clzsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ctzdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ctzsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/divdi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ffsdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/ffssi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_div_impl.inc: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_endianness.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_lib.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_types.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/int_util.h: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/moddi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/paritydi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/paritysi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/popcountdi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/popcountsi2.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/udivdi3.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/udivmoddi4.c: compiler-builtins
+      cpukit/compiler-rt/lib/builtins/umoddi3.c: compiler-builtins
+      cpukit/dev/iorelax.c: dev-io
+      cpukit/doxygen/appl-config.h: doxygen-appl-config
+      cpukit/doxygen/build.h: doxygen
+      cpukit/doxygen/hash-algorithms.h: hash-algorithms
+      cpukit/include/machine/_kernel_param.h: doxygen
+      cpukit/include/machine/_kernel_time.h: doxygen
+      cpukit/include/machine/_kernel_types.h: doxygen
+      cpukit/include/rtems/confdefs.h: face
+      cpukit/include/rtems/confdefs/extensions.h: irq-record
+      cpukit/include/rtems/confdefs/face.h: face
+      cpukit/include/rtems/confdefs/inittask.h: noinit-data
+      cpukit/include/rtems/confdefs/libio.h: jaffs2
+      cpukit/include/rtems/confdefs/newlib.h: reent-tls
+      cpukit/include/rtems/confdefs/percpu.h: idle-task-storage
+      cpukit/include/rtems/confdefs/scheduler.h: warning-no-member
+      cpukit/include/rtems/confdefs/threads.h:
+      - idle-task-storage
+      - reent-tls
+      - warning-zero-length-array
+      cpukit/include/rtems/confdefs/wkspace.h: idle-task-storage
+      cpukit/include/rtems/config.h:
+      - idle-task-storage
+      - absolute-symbols
+      - doxygen-appl-config
+      - build-options-header
+      cpukit/include/rtems/counter.h: cpu-counter-diff
+      cpukit/include/rtems/dev/io.h: dev-io
+      cpukit/include/rtems/libcsupport.h: reent-tls
+      cpukit/include/rtems/linkersets.h: doxygen
+      cpukit/include/rtems/malloc.h: doxygen
+      cpukit/include/rtems/printer.h: no-rtems-printer
+      cpukit/include/rtems/rtems/config.h: doxygen-appl-config
+      cpukit/include/rtems/rtems/intr.h:
+      - doxygen-appl-config
+      - build-options-header
+      - formatting
+      cpukit/include/rtems/rtems/mainpage.h: no-mainpage
+      cpukit/include/rtems/rtems/partdata.h: mpci-hide-impl
+      cpukit/include/rtems/rtems/tasks.h: doxygen
+      cpukit/include/rtems/rtems/types.h: build-options-header
+      cpukit/include/rtems/scheduler.h: doxygen
+      cpukit/include/rtems/score/assert.h: unreachable
+      cpukit/include/rtems/score/atomic.h: no-cpu-atomic
+      cpukit/include/rtems/score/basedefs.h:
+      - unreachable
+      - absolute-symbols
+      - formatting
+      cpukit/include/rtems/score/chain.h: doxygen
+      cpukit/include/rtems/score/coremsgimpl.h: inline
+      cpukit/include/rtems/score/cpustdatomic.h: no-cpu-atomic
+      cpukit/include/rtems/score/interr.h:
+      - idle-task-storage
+      - strict-c
+      cpukit/include/rtems/score/isr.h: absolute-symbols
+      cpukit/include/rtems/score/memory.h: noinit-data
+      cpukit/include/rtems/score/mrspimpl.h: scheduler-index
+      cpukit/include/rtems/score/objectdata.h: noinit-data
+      cpukit/include/rtems/score/objectimpl.h: unlimited-objects
+      cpukit/include/rtems/score/percpu.h: warning-zero-length-array
+      cpukit/include/rtems/score/priority.h: scheduler-uni
+      cpukit/include/rtems/score/priorityimpl.h:
+      - explicit-smp-code
+      - cxx-compatibility
+      cpukit/include/rtems/score/processormask.h:
+      - bitset-mask
+      - bitset-newlib
+      - doxygen
+      cpukit/include/rtems/score/profiling.h: cpu-counter-diff
+      cpukit/include/rtems/score/protectedheap.h: unused-protected-heap
+      cpukit/include/rtems/score/scheduleredfimpl.h:
+      - scheduler-uni
+      - cxx-compatibility
+      cpukit/include/rtems/score/schedulerimpl.h: scheduler-uni
+      cpukit/include/rtems/score/schedulerpriority.h: warning-zero-length-array
+      cpukit/include/rtems/score/schedulerpriorityimpl.h: scheduler-uni
+      cpukit/include/rtems/score/schedulersimpleimpl.h: scheduler-uni
+      cpukit/include/rtems/score/scheduleruniimpl.h: scheduler-uni
+      cpukit/include/rtems/score/smplockstats.h: cpu-counter-diff
+      cpukit/include/rtems/score/stack.h: idle-task-storage
+      cpukit/include/rtems/score/thread.h:
+      - idle-task-storage
+      - thread-registers
+      - noinit-data
+      - reent-tls
+      cpukit/include/rtems/score/threaddispatch.h:
+      - warning-uninitialized
+      - inline
+      cpukit/include/rtems/score/threadimpl.h:
+      - scheduler-index
+      - pthread-cancel
+      - thread-join
+      - explicit-smp-code
+      - inline
+      cpukit/include/rtems/score/timecounter.h: ntp
+      cpukit/include/rtems/score/tls.h:
+      - task-storage
+      - absolute-symbols
+      cpukit/include/rtems/score/todimpl.h: ntp
+      cpukit/include/rtems/sysinit.h: doxygen
+      cpukit/include/sha224.h: hash-algorithms
+      cpukit/include/sha256.h: hash-algorithms
+      cpukit/include/sys/timepps.h:
+      - ntp
+      - cxx-compatibility
+      cpukit/include/sys/timetc.h:
+      - ntp
+      - cxx-compatibility
+      cpukit/libcsupport/src/alloconly.c: alloconly
+      cpukit/libcsupport/src/malloc_p.h: alloconly
+      cpukit/posix/src/clocknanosleep.c: clocknanosleep
+      cpukit/rtems/src/clockgettickspersecond.c: clock-directives
+      cpukit/rtems/src/clockgettickssinceboot.c: clock-directives
+      cpukit/rtems/src/partcreate.c: formatting
+      cpukit/rtems/src/rtemsbuildname.c: rtems-build-name
+      cpukit/rtems/src/schedulerident.c: formatting
+      cpukit/rtems/src/taskdelete.c: thread-join
+      cpukit/rtems/src/timerserver.c: scheduler-uni
+      cpukit/score/cpu/no_cpu/cpuidle.c: gcc-pr108658
+      cpukit/score/cpu/sparc/cpu.c: task-storage
+      cpukit/score/cpu/sparc/cpu_asm.S:
+      - sparc-start-multitasking
+      - leon3-dsu
+      cpukit/score/cpu/sparc/include/rtems/score/cpu.h:
+      - sparc-start-multitasking
+      - leon3-dsu
+      cpukit/score/cpu/sparc/include/rtems/score/cpuatomic.h: no-cpu-atomic
+      cpukit/score/cpu/sparc/include/rtems/score/cpuimpl.h:
+      - task-storage
+      - leon3-dsu
+      - tls-idle
+      - tls-libdl
+      - inline
+      cpukit/score/cpu/sparc/include/rtems/score/sparcimpl.h: leon3-dsu
+      cpukit/score/cpu/sparc/sparc-counter-asm.S: leon3-dsu
+      cpukit/score/src/chainnodecount.c: libtest
+      cpukit/score/src/isr.c: absolute-symbols
+      cpukit/score/src/kern_tc.c: ntp
+      cpukit/score/src/objectinitializeinformation.c: unused-includes
+      cpukit/score/src/percpuasm.c: percpuasm
+      cpukit/score/src/rbtreeappend.c: smp-only
+      cpukit/score/src/rbtreeprepend.c: smp-only
+      cpukit/score/src/rbtreereplace.c: smp-only
+      cpukit/score/src/scheduleredfreleasejob.c: smp-only
+      cpukit/score/src/schedulerpriorityblock.c: scheduler-uni
+      cpukit/score/src/schedulerprioritychangepriority.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityschedule.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityunblock.c: scheduler-uni
+      cpukit/score/src/schedulerpriorityyield.c: scheduler-uni
+      cpukit/score/src/smpbarrierwait.c: libtest
+      cpukit/score/src/stackallocatorforidle.c: idle-task-storage
+      cpukit/score/src/threadchangepriority.c: explicit-smp-code
+      cpukit/score/src/threadcreateidle.c:
+      - idle-task-storage
+      - tls-idle
+      cpukit/score/src/threadinitialize.c:
+      - thread-join
+      - task-storage
+      - scheduler-index
+      cpukit/score/src/threadqops.c:
+      - explicit-smp-code
+      - formatting
+      cpukit/score/src/threadqtimeout.c: threadq-timeouts
+      cpukit/score/src/threadrestart.c:
+      - thread-join
+      - pthread-cancel
+      cpukit/score/src/tlsallocsize.c:
+      - task-storage
+      - absolute-symbols
+      cpukit/score/src/userextiterate.c: unused-includes
+      cpukit/score/src/watchdogtick.c: explicit-smp-code
+    role: input-to
+    source-compare-key: v5v6
+    uid: doc-djf-svr
+  pkg-type: directory-state
+  type: pkg
+copyrights:
+- Copyright (C) 2020 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

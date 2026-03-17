@@ -1,0 +1,66 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  enabled-by: true
+  ignored-commits:
+  - 12c4c9296e91e01e67298c4dcdf1a1708aebdfde
+  - 1976f1bac14aa97cbc433b06bfe258a8ec84bcd4
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: repository
+    role: input
+    uid: /pkg/source/rtems
+  - enabled-set-actions: []
+    hash: null
+    label: SpecCompareV5
+    name: spec-compare-revision
+    role: input
+    root-uid: /req/root
+    revision-key: v5
+    revision-name: package version 5
+    uid: /pkg/build/cache-rtems-spec-v5
+    unit-and-integration-test-suites: []
+    validation-test-suites: []
+  - enabled-set-actions: []
+    hash: null
+    label: SpecCompareV6
+    name: spec-compare-revision
+    role: input
+    root-uid: /req/root
+    revision-key: v6
+    revision-name: package version 6
+    uid: /pkg/build/cache-rtems-spec-v6
+    unit-and-integration-test-suites:
+    - /testsuites/unit
+    validation-test-suites:
+    - /testsuites/membench
+    - /testsuites/validation
+  - enabled-set-actions: []
+    hash: null
+    label: SpecCompare
+    name: spec-compare-revision
+    role: input
+    root-uid: /req/root
+    revision-key: v6.2
+    revision-name: package version 6.2
+    uid: /pkg/build/cache-rtems-spec-v6.2
+    unit-and-integration-test-suites:
+    - /testsuites/unit
+    validation-test-suites:
+    - /testsuites/membench
+    - /testsuites/validation
+  pkg-type: spec-compare-registry
+  type: pkg
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+enabled-by: compare-specs
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

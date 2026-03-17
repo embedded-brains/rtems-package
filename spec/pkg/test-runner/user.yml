@@ -1,0 +1,24 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+command:
+- echo
+- Please provide a command to run ${.:/test-executable} on your board.
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+default-timeout-in-seconds: 90.0
+description: |
+  Run the tests on the ${/target/user:/name}.
+discard-patterns: []
+do-not-run: []
+enabled-by: true
+links:
+- role: target
+  uid: /target/user
+max-process-count: 1
+max-retry-count-per-executable: 0
+min-timeout-in-seconds: 10.0
+name: Test Runner for the Board of the Package User
+params: {}
+pkg-type: test-runner
+test-runner-type: subprocess
+timeout-scaler: 2.0
+type: pkg

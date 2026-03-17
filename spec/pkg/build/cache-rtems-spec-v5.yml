@@ -1,0 +1,25 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+directory: ${.:/component/build-directory}/cache-rtems-spec-v5
+directory-state-type: item-cache
+enabled-by: pkg.feature.compare-specs
+files: []
+hash: null
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: source
+  role: input
+  uid: ../source/rtems-spec-v5
+patterns:
+- exclude: []
+  include: '**/*'
+spec-paths:
+- spec
+pkg-type: directory-state
+type: pkg

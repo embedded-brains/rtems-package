@@ -1,0 +1,65 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  content: |
+    $${.:/push-enabled-by:pkg.feature.qual}
+    .. important::
+
+        The Ada runtime library requires some features which are not available in
+        the pre-qualified feature set provided by the package.  For example, the
+        Ada tasking is implemented using the $${/glossary/posix:/term} API.
+    $${.:/pop-enabled-by}
+
+    The package contains an Ada example application.  Build it to check that the
+    tools work on your host computer.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) clean,cwd=%(/pkg/source/example-ada:/directory),hide=1}
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash),cwd=%(/pkg/source/example-ada:/directory)}
+
+    If you get a different output, then there is something wrong with the
+    unpacked archive or your host computer setup.
+
+    Try to run the example application
+    :file:`b-$${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}/example-ada.exe`
+    on a simulator or a target platform.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) run,cwd=%(/pkg/source/example-ada:/directory)}
+
+    If you get a different output, then there is something wrong with the
+    unpacked archive or your host computer setup.
+  enabled-by: __RTEMS_ADA__
+  label: null
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/example-ada
+  - hash: null
+    header: Build an Ada example application
+    header-is-optional: false
+    name: document-section
+    role: input-to
+    section-key: example
+    uid: doc-package-manual-examples-by-component
+  - hash: null
+    name: run-actions-member
+    params:
+      bsp: $${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}
+      working-directory: $${/pkg/source/example-ada:/directory}
+    role: input-to
+    uid: build-examples-extra
+  pkg-type: sphinx-section
+  type: pkg
+copyrights:
+- Copyright (C) 2023, 2024 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

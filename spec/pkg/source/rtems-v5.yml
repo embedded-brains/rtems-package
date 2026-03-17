@@ -1,0 +1,27 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+branch: pkg-v5
+clone-depth: null
+commit: 89499c4002fb5f8b0e1cfd7c1edac2e78076c835
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+description: |
+  This repository contains the RTEMS sources of the package version 5.
+destination-directory: ${.:/component/deployment-directory}/build/rtems-v5
+enabled-by: pkg.feature.compare-sources
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+origin-branch: '6'
+origin-commit: 89c498ccdae67ae817f8a141183b771948a817b9
+origin-commit-url: https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/${.:/origin-commit}
+origin-fetch: []
+origin-url: https://gitlab.rtems.org/rtems/rtos/rtems.git
+pkg-type: workspace
+symbolic-links: []
+post-clone-commands: []
+directory: ${.:/component/workspace-directory}/modules/rtems
+type: pkg
+workspace-type: repository

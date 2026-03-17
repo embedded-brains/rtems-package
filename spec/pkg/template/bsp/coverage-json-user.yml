@@ -1,0 +1,68 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  copyrights-by-license: {}
+  directory: $${.:/component/documentation-directory}/coverage
+  directory-state-type: test-coverage
+  enabled-by: RTEMS_QUAL
+  files:
+  - file: user.json
+    hash: null
+  hash: null
+  limits:
+    overall:
+      branch-min-percent: 100.0
+      function-min-percent: 100.0
+      line-min-percent: 100.0
+    per-file:
+      branch-min-percent: 100.0
+      function-min-percent: 100.0
+      line-min-percent: 100.0
+  links:
+  - role: weak-package-build-dependency
+    uid: /pkg/deployment/doc-package-summary
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: target
+    role: input
+    uid: /target/user
+  - hash: null
+    name: build-configuration
+    role: input
+    uid: build-config-qual-only-coverage
+  - hash: null
+    name: source
+    role: input
+    uid: rtems-qual-only
+  - hash: null
+    name: gcda
+    role: input
+    uid: gcda-qual-only-user
+  - hash: null
+    output-name: json
+    params:
+      gcda-sub-directory: $${.:/component/arch}/$${.:/component/bsp}$${.:/component/config:dash}-qual-only-coverage
+    role: make
+    uid: ../../../make/gcovr
+  - name: html
+    role: output
+    uid: coverage-html-user
+  - hash: null
+    name: test-coverage
+    role: input-to
+    uid: aggregate-test-results-user
+  pkg-type: directory-state
+  scope: RTEMS
+  type: pkg
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

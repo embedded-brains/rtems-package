@@ -1,0 +1,74 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  arch: ${.:/component/arch}
+  base-directory-map:
+  - source: ${.:/component/build-directory}/spec
+    target: ${.:/component/build-directory}
+  bsp: ${.:/bsp}
+  build-spec-directories:
+  - $${../../../source/rtems-v6:/directory}/spec/build
+  build-uids:
+  - /cpukit/librtemscpu
+  copyrights-by-license: {}
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6
+  directory-state-type: repository-subset
+  enabled-by:
+    and:
+    - RTEMS_QUAL
+    - compare-sources
+  enabled-set-extension:
+  - enable: INSTALL_LEGACY_MAKEFILES
+    enabled-by: true
+  - enable: RTEMS_QUAL_ONLY
+    enabled-by: true
+  extra-files:
+  - bsps/shared/doxygen.h
+  - bsps/shared/cache/cacheimpl.h
+  - bsps/shared/dev/clock/clockimpl.h
+  - bsps/sparc/shared/doxygen.h
+  - cpukit/compiler-rt/lib/builtins/int_div_impl.inc
+  - cpukit/compiler-rt/lib/builtins/int_endianness.h
+  - cpukit/compiler-rt/lib/builtins/int_lib.h
+  - cpukit/compiler-rt/lib/builtins/int_types.h
+  - cpukit/compiler-rt/lib/builtins/int_util.h
+  - cpukit/doxygen.h
+  - cpukit/doxygen/appl-config.h
+  - cpukit/doxygen/build.h
+  - cpukit/doxygen/hash-algorithms.h
+  - cpukit/doxygen/mainpage.h
+  - cpukit/doxygen/top-level-groups.h
+  - cpukit/libc/string/local.h
+  - cpukit/libmisc/cpuuse/cpuuseimpl.h
+  - cpukit/score/cpu/sparc/syscall.h
+  - cpukit/score/src/opt_compat.h
+  - cpukit/score/src/opt_ffclock.h
+  - cpukit/score/src/opt_ntp.h
+  files: []
+  hash: null
+  include-test-header: false
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/rtems-v6
+  - hash: null
+    name: source-compare-previous
+    role: input-to
+    source-compare-key: default
+    uid: doc-djf-svr
+  pkg-type: directory-state
+  type: pkg
+copyrights:
+- Copyright (C) 2025 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

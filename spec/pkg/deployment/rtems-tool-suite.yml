@@ -1,0 +1,77 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- action: remove-glob
+  enabled-by: true
+  path: ${.:/params/working-directory}
+  patterns:
+  - build
+  - patches
+  - rsb-log*
+  - sources
+  - tar
+  remove-tree: true
+- action: subprocess
+  command:
+  - ../source-builder/sb-set-builder
+  - --trace
+  - --pkg-tar-files
+  - --no-install
+  - --prefix
+  - ${../deployment/rtems-tool-suite:/directory}
+  - ${.:/component/rtems-version}/rtems-${.:/component/arch}
+  enabled-by: true
+  env: []
+  expected-return-code: 0
+  working-directory: ${.:/params/working-directory}
+- action: directory-state-discard-and-clear
+  enabled-by: true
+  output-name: .
+- action: directory-state-add-tarfile-members
+  enabled-by: true
+  extract: true
+  output-name: .
+  pattern: '*.tar.*'
+  prefix-path: /
+  search-path: ${.:/params/working-directory}/tar
+- action: directory-state-add-files
+  enabled-by: true
+  output-name: .
+  path: ${.:/params/working-directory}/patches
+  pattern: '**/*'
+- action: directory-state-add-files
+  enabled-by: true
+  output-name: .
+  path: ${.:/params/working-directory}/sources
+  pattern: '**/*'
+- action: remove-glob
+  enabled-by: true
+  path: ${.:/params/working-directory}
+  patterns:
+  - build
+  - tar
+  remove-tree: true
+copyrights:
+- Copyright (C) 2020, 2023 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+directory: ${.:/component/deployment-directory}
+directory-state-type: explicit
+enabled-by: pkg.feature.rsb
+files: []
+hash: null
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: source
+  role: input
+  uid: ../source/rsb
+- hash: null
+  name: member
+  role: input-to
+  uid: /pkg/deployment/archive
+params:
+  working-directory: ${../source/rsb:/directory}/rtems
+pkg-type: directory-state
+type: pkg
