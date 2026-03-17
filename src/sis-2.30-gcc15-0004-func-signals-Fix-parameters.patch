@@ -1,0 +1,27 @@
+From 22244aeefc86c5a0fa0f6acf5842a1ae4d18d907 Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <christian.mauderer@embedded-brains.de>
+Date: Thu, 23 Oct 2025 09:07:15 +0200
+Subject: [PATCH 4/5] func/signals: Fix parameters
+
+The functions returned by `signal` have one parameter. Fix that in the
+pointer to make it compilable with C23.
+---
+ func.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/func.c b/func.c
+index 47da0b3..2f4589c 100644
+--- a/func.c
++++ b/func.c
+@@ -846,7 +846,7 @@ int_handler (int sig)
+ void
+ init_signals ()
+ {
+-  typedef void (*PFI) ();
++  typedef void (*PFI) (int);
+   static PFI int_tab[2];
+ 
+   int_tab[0] = signal (SIGTERM, int_handler);
+-- 
+2.51.0
+

@@ -1,0 +1,249 @@
+From 6b0ad41c2a72407da954c5a61cafd1179b217c35 Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <christian.mauderer@embedded-brains.de>
+Date: Thu, 23 Oct 2025 09:00:48 +0200
+Subject: [PATCH 2/5] event: Fix number of parameters
+
+The function is always called with one parameter. This change is
+necessary to make the code compilable with C23.
+---
+ erc32.c  | 10 ++++++----
+ func.c   |  8 ++++----
+ greth.c  |  4 +++-
+ grlib.c  |  3 ++-
+ interf.c |  2 +-
+ leon2.c  |  5 +++--
+ remote.c |  3 ++-
+ sis.h    |  8 ++++----
+ tap.c    |  6 ++++--
+ 9 files changed, 29 insertions(+), 20 deletions(-)
+
+diff --git a/erc32.c b/erc32.c
+index 4f7e9b7..4f83bac 100644
+--- a/erc32.c
++++ b/erc32.c
+@@ -231,8 +231,8 @@ static void port_init (void);
+ static uint32 read_uart (uint32 addr);
+ static void write_uart (uint32 addr, uint32 data);
+ static void flush_uart (void);
+-static void uarta_tx (void);
+-static void uartb_tx (void);
++static void uarta_tx (int32);
++static void uartb_tx (int32);
+ static void uart_rx (int32 arg);
+ static void uart_intr (int32 arg);
+ static void uart_irq_start (void);
+@@ -1296,8 +1296,9 @@ flush_uart ()
+ 
+ 
+ static void
+-uarta_tx ()
++uarta_tx (int32 arg)
+ {
++  (void) arg;
+   while (f1open)
+     {
+       while (fwrite (&uarta_sreg, 1, 1, f1out) != 1)
+@@ -1317,8 +1318,9 @@ uarta_tx ()
+ }
+ 
+ static void
+-uartb_tx ()
++uartb_tx (int32 arg)
+ {
++  (void) arg;
+   while (f2open)
+     {
+       while (fwrite (&uartb_sreg, 1, 1, f2out) != 1)
+diff --git a/func.c b/func.c
+index 3df7b68..47da0b3 100644
+--- a/func.c
++++ b/func.c
+@@ -933,7 +933,7 @@ dis_mem (addr, len)
+ 
+ void
+ event (cfunc, arg, delta)
+-     void (*cfunc) ();
++     void (*cfunc) (int32);
+      int32 arg;
+      uint64 delta;
+ {
+@@ -972,7 +972,7 @@ event (cfunc, arg, delta)
+ /* remove event from event queue */
+ void
+ remove_event (cfunc, arg)
+-     void (*cfunc) ();
++     void (*cfunc) (int32);
+      int32 arg;
+ {
+   struct evcell *ev1, *evdel;
+@@ -1022,8 +1022,8 @@ advance_time (endtime)
+ {
+ 
+   struct evcell *evrem;
+-  void (*cfunc) ();
+-  uint32 arg;
++  void (*cfunc) (int32);
++  int32 arg;
+ 
+   while (ebase.evtime <= endtime)
+     {
+diff --git a/greth.c b/greth.c
+index 7e95b16..0b5459b 100644
+--- a/greth.c
++++ b/greth.c
+@@ -113,13 +113,15 @@ mdio_write (uint32 address, uint32 data)
+ }
+ 
+ static void
+-greth_tx (void)
++greth_tx (int32 arg)
+ {
+   int32 ws;
+   uint32 tmpdesc;
+   unsigned char buffer[2048];
+   int len, wlen, i;
+ 
++  (void) arg;
++
+   if (greth_ctrl & CTRL_TE)
+     {
+       ms->memory_read (greth_txbase, &greth_txdesc, &ws);
+diff --git a/grlib.c b/grlib.c
+index a1ef781..0970303 100644
+--- a/grlib.c
++++ b/grlib.c
+@@ -1241,8 +1241,9 @@ apbuart_flush (void)
+ }
+ 
+ static void
+-uarta_tx (void)
++uarta_tx (int32 arg)
+ {
++  (void) arg;
+   while (f1open)
+     {
+       while (fwrite (&uarta_sreg, 1, 1, f1out) != 1)
+diff --git a/interf.c b/interf.c
+index 522f782..de8db7c 100644
+--- a/interf.c
++++ b/interf.c
+@@ -127,7 +127,7 @@ sim_resume (int step)
+     simstat = run_sim_gdb (1, 0);
+   else
+     {
+-      socket_poll ();
++      socket_poll (0);
+       simstat = run_sim_gdb (UINT64_MAX / 2, 0);
+       remove_event (socket_poll, -1);
+     }
+diff --git a/leon2.c b/leon2.c
+index 7713cd6..3af1e54 100644
+--- a/leon2.c
++++ b/leon2.c
+@@ -143,7 +143,7 @@ static void port_init (void);
+ static uint32 grlib_read_uart (uint32 addr);
+ static void grlib_write_uart (uint32 addr, uint32 data);
+ static void flush_uart (void);
+-static void uarta_tx (void);
++static void uarta_tx (int32 arg);
+ static void uart_rx (int32 arg);
+ static void uart_intr (int32 arg);
+ static void uart_irq_start (void);
+@@ -660,8 +660,9 @@ flush_uart (void)
+ }
+ 
+ static void
+-uarta_tx (void)
++uarta_tx (int32 arg)
+ {
++  (void) arg;
+   while (f1open)
+     {
+       while (fwrite (&uarta_sreg, 1, 1, f1out) != 1)
+diff --git a/remote.c b/remote.c
+index 7093516..4147157 100644
+--- a/remote.c
++++ b/remote.c
+@@ -122,8 +122,9 @@ create_socket (int port)
+ 
+ /* poll socket periodically to detect gdb break */
+ void
+-socket_poll ()
++socket_poll (int32 arg)
+ {
++  (void) arg;
+   WSAPOLLFD fdarray = { 0 };
+   int ret;
+ 
+diff --git a/sis.h b/sis.h
+index 994d906..9eaaf27 100644
+--- a/sis.h
++++ b/sis.h
+@@ -174,7 +174,7 @@ struct pstate
+ 
+ struct evcell
+ {
+-  void (*cfunc) ();
++  void (*cfunc) (int32);
+   int32 arg;
+   uint64 time;
+   struct evcell *nxt;
+@@ -291,7 +291,7 @@ extern void init_signals (void);
+ 
+ void print_insn_sis (uint32 addr);
+ extern uint32 dis_mem (uint32 addr, uint32 len);
+-extern void event (void (*cfunc) (), int32 arg, uint64 delta);
++extern void event (void (*cfunc) (int32), int32 arg, uint64 delta);
+ extern uint32 now (void);
+ extern int check_bpt (struct pstate *sregs);
+ extern int check_wpr (struct pstate *sregs, int32 address,
+@@ -316,7 +316,7 @@ extern int cpu;			/* active debug cpu */
+ extern int ncpu;		/* number of online cpus */
+ extern int delta;		/* time slice for MP simulation */
+ extern void pwd_enter (struct pstate *sregs);
+-extern void remove_event (void (*cfunc) (), int32 arg);
++extern void remove_event (void (*cfunc) (int32), int32 arg);
+ extern int run_sim (uint64 icount, int dis);
+ void save_sp (struct pstate *sregs);
+ void cov_start (int address);
+@@ -389,7 +389,7 @@ extern const struct memsys rv32;
+ extern void gdb_remote (int port);
+ extern int simstat;
+ extern int new_socket;
+-extern void socket_poll ();
++extern void socket_poll (int32 arg);
+ 
+ /* interf.c */
+ 
+diff --git a/tap.c b/tap.c
+index a3958af..99c2f2e 100644
+--- a/tap.c
++++ b/tap.c
+@@ -25,7 +25,7 @@ static int fd, err, sockfd;
+ static char dev[64];
+ static int tun_fd, nread, br_socket_fd;
+ static int br_add_interface (const char *bridge, const char *dev);
+-static void sis_tap_poll ();
++static void sis_tap_poll (int32 arg);
+ 
+ int
+ sis_tap_init (long unsigned emac)
+@@ -150,12 +150,14 @@ sis_tap_write (unsigned char *buffer, int len)
+ }
+ 
+ static void
+-sis_tap_poll ()
++sis_tap_poll (int32 arg)
+ {
+   struct pollfd fds[1];
+   int ret;
+   unsigned char buffer[1536];
+ 
++  (void) arg;
++
+   fds[0].fd = tun_fd;
+   fds[0].events = POLLRDNORM;
+   ret = poll (fds, 1, 0);
+-- 
+2.51.0
+

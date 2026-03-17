@@ -1,0 +1,127 @@
+/* SPDX-License-Identifier: BSD-2-Clause */
+
+/*
+ * Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#include <rtems/bspIo.h>
+#include <rtems/version.h>
+
+#include "appl-config.h"
+
+static void Init(rtems_task_argument arg)
+{
+	(void)arg;
+	(void)printk("\n\n*** BEGIN OF TEST " APPL_NAME " ***\n"
+		     "*** TEST VERSION: %s\n"
+		     "*** TEST STATE: EXPECTED_PASS\n"
+		     "*** TEST BUILD:"
+#if RTEMS_DEBUG
+		     " RTEMS_DEBUG"
+#endif
+#if RTEMS_MULTIPROCESSING
+		     " RTEMS_MULTIPROCESSING"
+#endif
+#if RTEMS_NETWORKING
+		     " RTEMS_NETWORKING"
+#endif
+#if RTEMS_PARAVIRT
+		     " RTEMS_PARAVIRT"
+#endif
+#if RTEMS_POSIX_API
+		     " RTEMS_POSIX_API"
+#endif
+#if RTEMS_PROFILING
+		     " RTEMS_PROFILING"
+#endif
+#if RTEMS_SMP
+		     " RTEMS_SMP"
+#endif
+		     "\n"
+		     "*** TEST TOOLS: " __VERSION__ "\n",
+		     rtems_version());
+	int exit_code = main();
+
+	if (exit_code == 0) {
+		(void)printk("\n*** END OF TEST " APPL_NAME " ***\n\n");
+	}
+
+	rtems_fatal(RTEMS_FATAL_SOURCE_EXIT, (rtems_fatal_code)exit_code);
+}
+
+#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+
+#ifdef APPL_PROCESSOR_COUNT
+#define CONFIGURE_MAXIMUM_PROCESSORS APPL_PROCESSOR_COUNT
+#else
+#define CONFIGURE_MAXIMUM_PROCESSORS 4
+#endif
+
+#ifdef APPL_TASK_COUNT
+#define CONFIGURE_MAXIMUM_TASKS APPL_TASK_COUNT
+#else
+#define CONFIGURE_MAXIMUM_TASKS 4
+#endif
+
+#define CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE 1
+
+#define CONFIGURE_MAXIMUM_BARRIERS CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_MESSAGE_QUEUES CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_PARTITIONS CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_PERIODS CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_SEMAPHORES CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_TIMERS CONFIGURE_MAXIMUM_TASKS
+
+#define CONFIGURE_MAXIMUM_USER_EXTENSIONS 4
+
+#define CONFIGURE_MICROSECONDS_PER_TICK 1000
+
+#define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS 0
+
+#define CONFIGURE_DISABLE_NEWLIB_REENTRANCY
+
+#define CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
+
+#define CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE APPL_MAX_TLS_SIZE
+
+#define CONFIGURE_TASK_STACK_ALLOCATOR_MALLOC_AND_NO_FREE
+
+#define CONFIGURE_RTEMS_INIT_TASKS_TABLE
+
+#define CONFIGURE_INIT_TASK_ATTRIBUTES APPL_TASK_ATTRIBUTES
+
+#define CONFIGURE_INIT_TASK_INITIAL_MODES RTEMS_DEFAULT_MODES
+
+#define CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE APPL_TASK_STORAGE_SIZE
+
+#define CONFIGURE_IDLE_TASK_STORAGE_SIZE (APPL_MAX_TLS_SIZE + RTEMS_MINIMUM_STACK_SIZE)
+
+#define CONFIGURE_INIT
+
+#include <rtems/confdefs.h>
