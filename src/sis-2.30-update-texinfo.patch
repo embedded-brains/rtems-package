@@ -1,0 +1,68 @@
+diff --git a/sis.info b/sis.info
+index 89882c2a9..03c4e1a78 100644
+--- a/sis.info
++++ b/sis.info
+@@ -1,6 +1,6 @@
+-This is sis.info, produced by makeinfo version 6.8 from sis.texi.
++This is sis.info, produced by makeinfo version 6.5 from sis.texi.
+ 
+-This manual is for SIS (version 2.30, 30 July 2021).
++This manual is for SIS (version 2.30, 26 October 2022).
+ 
+    Copyright (C) 2020 Free Software Foundation, Inc.
+ 
+@@ -21,7 +21,7 @@ File: sis.info,  Node: Top,  Next: Introduction,  Up: (dir)
+ SIS
+ ***
+ 
+-This manual is for SIS (version 2.30, 30 July 2021).
++This manual is for SIS (version 2.30, 26 October 2022).
+ 
+ * Menu:
+ 
+@@ -1421,22 +1421,17 @@ Index
+ 
+ 
+ Tag Table:
+-Node: Top697
+-Node: Introduction1047
+-Node: Invoking sis1800
+-Node: Commands4360
+-Node: Emulated Systems8464
+-Node: Multi-processing23159
+-Node: Networking23647
+-Node: Interfacing to GDB29957
+-Node: Code coverage30361
+-Node: Building SIS31366
+-Node: GNU Free Documentation License32016
+-Node: Index57160
++Node: Top700
++Node: Introduction1053
++Node: Invoking sis1806
++Node: Commands4366
++Node: Emulated Systems8470
++Node: Multi-processing23165
++Node: Networking23653
++Node: Interfacing to GDB29963
++Node: Code coverage30367
++Node: Building SIS31372
++Node: GNU Free Documentation License32022
++Node: Index57166
+ 
+ End Tag Table
+-
+-
+-Local Variables:
+-coding: utf-8
+-End:
+diff --git a/version.texi b/version.texi
+index 997e1abbb..47cbcd433 100644
+--- a/version.texi
++++ b/version.texi
+@@ -1,4 +1,4 @@
+-@set UPDATED 30 July 2021
+-@set UPDATED-MONTH July 2021
++@set UPDATED 26 October 2022
++@set UPDATED-MONTH October 2022
+ @set EDITION 2.30
+ @set VERSION 2.30

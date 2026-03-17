@@ -1,0 +1,34 @@
+From 46c2dce8b392d0faa4d0ae95292073b034f16017 Mon Sep 17 00:00:00 2001
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Date: Fri, 17 Nov 2023 16:02:30 +0100
+Subject: [PATCH] grlib: Improve L2C support
+
+Take GRLIB-TN-0021 errata workarounds into account.
+---
+ grlib.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/grlib.c b/grlib.c
+index bcd6bbe23d..669afdede3 100644
+--- a/grlib.c
++++ b/grlib.c
+@@ -264,11 +264,16 @@ grlib_l2c_read (uint32 addr, uint32 * data)
+       /* Status */
+       res = 0x00502803;
+       break;
++    case 0x3C:
++      /* Access control (128WF=1, SPLIT=1) */
++      res = 0x00000012;
++      break;
+     default:
+       res = 0;
+     }
+ 
+   *data = res;
++  return 1;
+ }
+ 
+ static void
+-- 
+2.35.3
+

@@ -1,0 +1,4 @@
+b-*
+*.pyc
+__pycache__
+/spec-cache
