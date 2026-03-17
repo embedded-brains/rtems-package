@@ -1,0 +1,303 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  arch: ${.:/component/arch}
+  base-directory-map:
+  - source: ${.:/component/build-directory}/spec
+    target: $${.:/component/deployment-directory}/src
+  bsp: ${.:/bsp}
+  build-spec-directories: []
+  build-uids:
+  - /build/cpukit/librtemscpu
+  copyrights-by-license: {}
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-current
+  directory-state-type: repository-subset
+  enabled-by:
+    and:
+    - RTEMS_QUAL
+    - compare-sources
+  enabled-set-extension:
+  - enable: INSTALL_LEGACY_MAKEFILES
+    enabled-by: true
+  - enable: RTEMS_QUAL_ONLY
+    enabled-by: true
+  extra-files:
+  - bsps/shared/doxygen.h
+  - bsps/shared/cache/cacheimpl.h
+  - bsps/shared/dev/clock/clockimpl.h
+  - bsps/sparc/shared/doxygen.h
+  - cpukit/compiler-rt/lib/builtins/int_div_impl.inc
+  - cpukit/compiler-rt/lib/builtins/int_endianness.h
+  - cpukit/compiler-rt/lib/builtins/int_lib.h
+  - cpukit/compiler-rt/lib/builtins/int_types.h
+  - cpukit/compiler-rt/lib/builtins/int_util.h
+  - cpukit/doxygen.h
+  - cpukit/doxygen/appl-config.h
+  - cpukit/doxygen/build.h
+  - cpukit/doxygen/hash-algorithms.h
+  - cpukit/doxygen/mainpage.h
+  - cpukit/doxygen/top-level-groups.h
+  - cpukit/libc/string/local.h
+  - cpukit/libmisc/cpuuse/cpuuseimpl.h
+  - cpukit/score/cpu/sparc/syscall.h
+  - cpukit/score/src/opt_compat.h
+  - cpukit/score/src/opt_ffclock.h
+  - cpukit/score/src/opt_ntp.h
+  files: []
+  hash: null
+  include-test-header: false
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/rtems
+  - file-to-review:
+      bsps/include/bsp/irq-generic.h:
+      - bsp-interrupt-affinity
+      - fix-type-cast
+      bsps/shared/dev/clock/clockimpl.h:
+      - cxx-compat
+      - unused-args
+      bsps/shared/irq/irq-affinity.c: bsp-interrupt-affinity
+      bsps/sparc/leon3/clock/ckinit.c: bsp-interrupt-affinity
+      bsps/sparc/leon3/include/bsp/irq.h: bsp-interrupt-affinity
+      bsps/sparc/leon3/include/bsp/leon3.h:
+      - leon3-gptimer
+      - grlib-tn-0021
+      bsps/sparc/leon3/start/bspclean.c: unused-args
+      bsps/sparc/leon3/start/bspidle.S: leon3-power-down
+      bsps/sparc/leon3/start/bspsmp.c: bsp-interrupt-affinity
+      bsps/sparc/leon3/start/cache.c: grlib-tn-0021
+      bsps/sparc/leon3/start/eirq.c:
+      - bsp-interrupt-affinity
+      - cxx-compat
+      cpukit/include/machine/_timecounter.h: timecounter
+      cpukit/include/rtems/confdefs/clock.h: ticks-per-timeslice
+      cpukit/include/rtems/confdefs/extensions.h: record
+      cpukit/include/rtems/rtems/intr.h: empty-structs
+      cpukit/include/rtems/rtems/optionsimpl.h: simplify-options-impl
+      cpukit/include/rtems/rtems/timerimpl.h: empty-structs
+      cpukit/include/rtems/score/atomic.h: deprecate-atomic-var-init
+      cpukit/include/rtems/score/basedefs.h: undef-warnings
+      cpukit/include/rtems/score/chainimpl.h: empty-structs
+      cpukit/include/rtems/score/isrlock.h: empty-structs
+      cpukit/include/rtems/score/percpu.h: unused-wait-for-non-initial-state
+      cpukit/include/rtems/score/priorityimpl.h: fix-thread-priority-changes
+      cpukit/include/rtems/score/processormask.h: cxx-compat
+      cpukit/include/rtems/score/processormaskimpl.h: cxx-compat
+      cpukit/include/rtems/score/schedulerimpl.h: fix-thread-priority-aggregations
+      cpukit/include/rtems/score/thread.h:
+      - empty-structs
+      - fix-thread-priority-aggregations
+      cpukit/include/rtems/score/threaddispatch.h: cxx-compat
+      cpukit/include/rtems/score/threadimpl.h: fix-thread-priority-aggregations
+      cpukit/include/rtems/score/timecounter.h: empty-structs
+      cpukit/include/rtems/score/timespec.h: time-t
+      cpukit/include/rtems/score/smpimpl.h: cxx-compat
+      cpukit/include/sys/_ffcounter.h: freebsd
+      cpukit/include/sys/timeffc.h: freebsd
+      cpukit/include/sys/timepps.h:
+      - freebsd
+      - pps-sync
+      cpukit/include/sys/timetc.h: freebsd
+      cpukit/include/sys/timex.h: freebsd
+      cpukit/score/cpu/sparc/include/rtems/score/cpuimpl.h: sparc-get-cpu
+      cpukit/score/src/kern_tc.c:
+      - empty-structs
+      - freebsd
+      - pps-sync
+      cpukit/score/src/objectinitializeinformation.c: assert-api-index
+      cpukit/score/src/processormaskcopy.c: cxx-compat
+      cpukit/score/src/smp.c: improve-smp-start
+      cpukit/score/src/threadchangepriority.c:
+      - fix-thread-priority-changes
+      - unused-args
+      cpukit/score/src/threadq.c: unused-args
+      cpukit/score/src/threadqenqueue.c: unused-args
+      cpukit/score/src/threadqops.c:
+      - fix-thread-priority-changes
+      - unused-args
+      cpukit/score/src/threadqtimeout.c: unused-args
+      cpukit/score/src/threadrestart.c: unused-args
+      cpukit/score/src/userextiterate.c:
+      - ignore-dangling-pointer-warning
+      - unused-args
+      make/README.md: markdown
+    hash: null
+    label: SourceCompare
+    name: source-compare-current
+    renamed:
+      make/README.md: make/README
+    reviews:
+      assert-api-index:
+        subject: Add assert for API index too high
+        text: |
+          Adding assertions like this may help static analysis tools to reduce
+          the number of reported false positives.  See also
+          $${/pkg/issue/rtems/5084:/name}.
+      bsp-interrupt-affinity:
+        subject: Improve interrupt affinity implementation
+        text: |
+          This change set improved the interrupt affinity implementation across
+          architectures and $${/glossary/bsp:/plural} and eases maintenance.
+
+          The declarations of $${.:/sdd-function:bsp_interrupt_get_affinity}
+          and $${.:/sdd-function:bsp_interrupt_set_affinity} moved to the
+          shared $${/bsp/if/header-2:/path} header file.  The ``<bsp/irq.h>``
+          includes were canonicalized.
+
+          The ``bsp_interrupt_get_affinity()`` and
+          ``bsp_interrupt_set_affinity()`` functions are only implemented if
+          needed (usually $${/build-options/if/smp:/name}).
+      cxx-compat:
+        subject: Improve C/C++ standard compatibility
+        text: |
+          The processor mask implementation uses ``flsl()`` from
+          ``<strings.h>`` which is only BSD visible.  This change moved the
+          implementation to a separate header file to hide it from the API
+          level.  This fixed build errors with GCC 14.
+
+          Several volatile operations are deprecated in C++20 including
+          increments.
+      deprecate-atomic-var-init:
+        subject: Do not use deprecated ATOMIC_VAR_INIT()
+        text: |
+          The ``ATOMIC_VAR_INIT()`` interface of ``<stdatomic.h>`` is
+          deprecated since C17.  Do not use it to ease potential future GCC
+          updates.  See also $${/pkg/issue/rtems/5285:/name}.
+      empty-structs:
+        subject: Avoid empty structures
+        text: |
+          This change set fixes a C/C++ compatibility issue.  Empty structures
+          are implementation-defined in C.  GCC gives them a size of zero.  In
+          C++, empty structures have a non-zero size.  Avoid using them.  See
+          $${/pkg/issue/rtems/4957:/name} and $${/pkg/issue/rtems/5038:/name}.
+      fix-thread-priority-aggregations:
+        subject: Fix thread priority aggregations
+        text: |
+          This change set implements an important bug fix for configurations
+          with $${/build-options/if/posix:/name} enabled.  This option is not
+          enabled for the package, however, users of the package may still use
+          the RTEMS sources in their own configuration.  This bug is critical
+          to fix.  See also $${/pkg/issue/rtems/5164:/name}.
+      fix-thread-priority-changes:
+        subject: Fix thread priority changes
+        text: |
+          This bug fix is one of the main reasons for the package release.  In
+          $${/glossary/smp:/term} configurations, the thread priority change
+          implementation had severe issues under certain conditions.  See
+          $${/pkg/issue/esa/928:/name} and $${/pkg/issue/rtems/5159:/name}.
+      fix-type-cast:
+        subject: Fix type cast
+        text: |
+          A type cast in $${.:/sdd-function:bsp_interrupt_entry_store_release}
+          was fixed.
+      freebsd:
+        subject: Synchronize with FreeBSD
+        text: |
+          The RTEMS Project routinely synchronizes code shared with FreeBSD.
+          Integrate the changes to ease future maintenance.
+      grlib-tn-0021:
+        subject: Address GRLIB-TN-0021 errata
+        text: |
+          This change set ensures atomic access to the cache controller
+          required as an errata workaround.  See also
+          $${/pkg/issue/rtems/4925:/name}.
+      ignore-dangling-pointer-warning:
+        subject: Ignore dangling pointer warning
+        text: |
+          In this change set, a dangling pointer warning in
+          $${.:/sdd-function:_User_extensions_Iterate} was added and justified.
+          This gives more context to code reviewers.
+      improve-smp-start:
+        subject: Improve SMP processor start and shutdown
+        text: |
+          In ``_SMP_Start_processors()``, set the boot processor properties
+          before others to allow other processors to figure out the boot
+          processor.  In ``_SMP_Request_shutdown()``, use $${.:/sdd:_Per_CPU_Get} which may be more efficient
+          if ``_CPU_Get_current_per_CPU_control()`` is available.
+      leon3-gptimer:
+        subject: Fix GPTIMER timer index logic
+        text: |
+          The change set affects only the
+          $${/build-options/if/multiprocessing:/name} configuration.  See also
+          $${/pkg/issue/rtems/5281:/name}.
+      leon3-power-down:
+        subject: Update LEON3 power-down procedure
+        text: |
+          The LEON3-specific power-down procedure was updated.  It now contains
+          the workaround for the GR712RC power-down errata described in
+          GR712RC-UM, version 2.16, section 1.7.8. The workaround is compatible
+          with other LEON3/LEON4 components.  See also
+          $${/pkg/issue/rtems/4875:/name}.
+      markdown:
+        subject: Convert to Markdown
+        text: |
+          The RTEMS Project uses now Markdown as the primary documentation
+          source format.  See also $${/pkg/issue/rtems-docs/40:/name}.
+      pps-sync:
+        subject: Add RTEMS_PPS_SYNC CPU option
+        text: |
+          The RTEMS_PPS_SYNC CPU option was added to avoid dead code in the
+          pre-qualified feature set implementation.
+      record:
+        subject: Improve the event recording
+        text: |
+          The event recording support is not yet pre-qualified.  However, the
+          update of the RTEMS tools requires a matching event recording support
+          in RTEMS.  See also $${/pkg/issue/rtems/5244:/name}.
+      sparc-get-cpu:
+        subject: Correct global file scope register use
+        text: |
+          Using the ``register`` keyword is deprecated in recent C/C++
+          standards.  See also $${/pkg/issue/rtems/5250:/name}.
+      simplify-options-impl:
+        subject: Simplify optionsimpl.h
+        text: |
+          Code was simplified by replacing a ternary operator with a boolean
+          expression.  Formatting was fixed.
+      ticks-per-timeslice:
+        subject: Improve CONFIGURE_TICKS_PER_TIMESLICE
+        text: |
+          The $${/acfg/if/ticks-per-time-slice:/name} configuration option
+          handling and documentation was improved.  See also
+          $${/pkg/issue/rtems/4986:/name}.
+      timecounter:
+        subject: Add missing timecounter declarations
+        text: |
+          See also $${/pkg/issue/rtems/5212:/name}.
+      time-t:
+        subject: Eliminate use of 32-bit for time_t
+        text: |
+          See also $${/pkg/issue/rtems/5107:/name}.
+      undef-warnings:
+        subject: Avoid undefined define warnings in API header
+        text: |
+          $${/glossary/api:/term} header files should not generate warnings.
+      unused-args:
+        subject: Avoid unused arguments and variables
+        text: |
+          The RTEMS Project aims to get rid of all unused arguments and
+          variables in the code base.  See $${/pkg/issue/rtems/4862:/name}.
+      unused-wait-for-non-initial-state:
+        subject: Remove unused function
+        text: |
+          Remove unused ``_Per_CPU_State_wait_for_non_initial_state()``.
+    role: input-to
+    source-compare-key: default
+    uid: doc-djf-svr
+  pkg-type: directory-state
+  type: pkg
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

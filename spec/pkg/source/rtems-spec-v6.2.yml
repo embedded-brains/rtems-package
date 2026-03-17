@@ -1,0 +1,27 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+branch: spec-v6.2
+clone-depth: 1
+commit: ${.:/git-commit-head}
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+description: |
+  This repository contains the RTEMS sources.
+destination-directory: ${.:/component/deployment-directory}/src/rtems-spec-v6.2
+enabled-by: pkg.feature.compare-specs
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+origin-branch: null
+origin-commit: null
+origin-commit-url: https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/${.:/origin-commit}
+origin-fetch: []
+origin-url: https://gitlab.rtems.org/rtems/rtos/rtems.git
+pkg-type: workspace
+symbolic-links: []
+post-clone-commands: []
+directory: ${.:/component/workspace-directory}/modules/rtems
+type: pkg
+workspace-type: repository

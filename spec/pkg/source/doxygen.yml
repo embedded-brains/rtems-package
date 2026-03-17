@@ -1,0 +1,34 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+archive-file: ${.:/component/workspace-directory}/src/doxygen-1.15.0.src.tar.gz
+archive-hash: 5TzI2mzx_jyjs2N2R-1q-ig2U1HqyB0BD2aR2TnfXkSbPYmKb2ld2FDRJlnf1wGPyGQHGzD7yl3RltwJTsQ3Hg==
+archive-patches:
+- file: src/0001-Add-path-attribute-to-group-tagfile.patch
+  hash: zpw4x0NuWrqhmOhaUmFI0TWU17kFqkeDzyQB9zMzcrMJ8SPzG-SWCsQZ2ZsjQuUe9CWlJRUQMOE3nvAyuggjvw==
+- file: src/0002-Improve-file-name-matching.patch
+  hash: VcIww7e9wmLzIfwU4_3iRMlgnwwYXig0drfufK3bhwhL4lkjmCtfjG3-jTaOJvc4FosN7gyqN_TWHbJS9us1Ug==
+symbolic-links: []
+archive-url: https://www.doxygen.nl/files/doxygen-1.15.0.src.tar.gz
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  description: |
+    The Doxygen sources are used to provide host tools to generate software
+    documentations.
+  files:
+  - LICENSE
+description: |
+  Doxygen sources.
+destination-directory: ${.:/component/deployment-directory}/src
+enabled-by: true
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+pkg-type: workspace
+type: pkg
+workspace-type: archive

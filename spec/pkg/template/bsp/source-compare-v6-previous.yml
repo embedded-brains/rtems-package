@@ -1,0 +1,67 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  arch: ${.:/component/arch}
+  base-directory-map:
+  - source: $${/pkg/source/rtems-v5:/directory}/spec
+    target: $${/pkg/source/rtems-v5:/directory}
+  bsp: ${.:/bsp}
+  build-spec-directories:
+  - $${/pkg/source/rtems-v5:/directory}/spec/build
+  build-uids:
+  - /cpukit/librtemscpu
+  copyrights-by-license: {}
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-v6-compare-previous
+  directory-state-type: repository-subset
+  enabled-by:
+    and:
+    - RTEMS_QUAL
+    - compare-sources
+  enabled-set-extension:
+  - enable: INSTALL_LEGACY_MAKEFILES
+    enabled-by: true
+  - enable: RTEMS_QUAL_ONLY
+    enabled-by: true
+  extra-files:
+  - bsps/shared/doxygen.h
+  - bsps/shared/cache/cacheimpl.h
+  - bsps/shared/dev/clock/clockimpl.h
+  - bsps/sparc/leon3/include/tm27.h
+  - bsps/sparc/shared/doxygen.h
+  - cpukit/doxygen.h
+  - cpukit/doxygen/appl-config.h
+  - cpukit/doxygen/top-level-groups.h
+  - cpukit/libc/string/local.h
+  - cpukit/libmisc/cpuuse/cpuuseimpl.h
+  - cpukit/score/cpu/sparc/syscall.h
+  - cpukit/score/src/opt_compat.h
+  - cpukit/score/src/opt_ffclock.h
+  - cpukit/score/src/opt_ntp.h
+  files: []
+  hash: null
+  include-test-header: false
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/rtems-v5
+  - hash: null
+    name: source-compare-previous
+    role: input-to
+    source-compare-key: v5v6
+    uid: doc-djf-svr
+  pkg-type: directory-state
+  type: pkg
+copyrights:
+- Copyright (C) 2025 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg
