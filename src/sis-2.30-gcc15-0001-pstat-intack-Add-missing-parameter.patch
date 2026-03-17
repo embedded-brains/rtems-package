@@ -1,0 +1,80 @@
+From c88d2dd9221aedec122648f22c8e1d927467864f Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <christian.mauderer@embedded-brains.de>
+Date: Thu, 23 Oct 2025 08:56:34 +0200
+Subject: [PATCH 1/5] pstat->intack: Add missing parameter
+
+The function is called with two parameters. This change is necessary to
+make the code compilable with C23.
+---
+ erc32.c | 6 ++++--
+ leon2.c | 5 +++--
+ sis.h   | 2 +-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/erc32.c b/erc32.c
+index 141c200..4f7e9b7 100644
+--- a/erc32.c
++++ b/erc32.c
+@@ -221,7 +221,7 @@ static void decode_wcr (void);
+ static void decode_mcr (void);
+ static void close_port (void);
+ static void mec_reset (void);
+-static void mec_intack (int32 level);
++static void mec_intack (int32 level, int32 cpu);
+ static void chk_irq (void);
+ static void mec_irq (int32 level);
+ static void set_sfsr (uint32 fault, uint32 addr, uint32 asi, uint32 read);
+@@ -505,10 +505,12 @@ mec_reset ()
+ 
+ 
+ static void
+-mec_intack (level)
++mec_intack (level, cpu)
+      int32 level;
++     int cpu;
+ {
+   int irq_test;
++  (void) cpu;
+ 
+   if (sis_verbose)
+     printf ("interrupt %d acknowledged\n", level);
+diff --git a/leon2.c b/leon2.c
+index e3d2f09..7713cd6 100644
+--- a/leon2.c
++++ b/leon2.c
+@@ -134,7 +134,7 @@ static uint32 uarta_data;
+ static void mem_init (void);
+ static void close_port (void);
+ static void leon2_reset (void);
+-static void irqctrl_intack (int32 level);
++static void irqctrl_intack (int32 level, int32 cpu);
+ static void chk_irq (void);
+ static void set_irq (int32 level);
+ static int32 apb_read (uint32 addr, uint32 * data);
+@@ -244,8 +244,9 @@ leon2_reset (void)
+ }
+ 
+ static void
+-irqctrl_intack (int32 level)
++irqctrl_intack (int32 level, int32 cpu)
+ {
++  (void) cpu;
+   int irq_test;
+ 
+   if (sis_verbose > 2)
+diff --git a/sis.h b/sis.h
+index f60d9be..994d906 100644
+--- a/sis.h
++++ b/sis.h
+@@ -146,7 +146,7 @@ struct pstate
+   int cpu;
+   uint64 simtime;		/* local processor time */
+   uint32 cache_ctrl;		/* Leon3 cache control register */
+-  void (*intack) ();		/* interrupt ack. callback */
++  void (*intack) (int32, int32);/* interrupt ack. callback */
+ 
+   uint32 mip;
+   uint32 mie;
+-- 
+2.51.0
+

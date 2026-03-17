@@ -1,0 +1,29 @@
+From ab61f5059f1d8a812c733e8977f31d0e9f7d98e0 Mon Sep 17 00:00:00 2001
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Date: Wed, 25 Sep 2024 08:31:32 +0200
+Subject: [PATCH 1/2] Add "path" attribute to group tagfile
+
+This helps consumers of the tagfile to associate files with groups if
+the filenames are not unique within the project.
+---
+ src/groupdef.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/groupdef.cpp b/src/groupdef.cpp
+index f9e3e94c9..4086f77b8 100644
+--- a/src/groupdef.cpp
++++ b/src/groupdef.cpp
+@@ -711,7 +711,9 @@ void GroupDefImpl::writeTagFile(TextStream &tagFile)
+           {
+             if (fd->isLinkableInProject())
+             {
+-              tagFile << "    <file>" << convertToXML(fd->name()) << "</file>\n";
++              tagFile << "    <file path=\""
++                << convertToXML(stripFromPath(fd->getPath())) << "\">"
++                << convertToXML(fd->name()) << "</file>\n";
+             }
+           }
+         }
+-- 
+2.51.0
+
