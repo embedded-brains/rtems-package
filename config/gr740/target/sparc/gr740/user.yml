@@ -1,0 +1,33 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+brief: |
+  This is a board of the package user.
+copyrights:
+- Copyright (C) 2026 embedded brains GmbH & Co. KG
+enabled-by: sparc/gr740
+description:
+  This describes a board of the package user.
+key: simulator
+links:
+- role: proxy-member
+  uid: ../../user
+- role: requirement-refinement
+  uid: ../gr740
+- role: test-timeouts
+  uid: user/test-timeouts
+- role: performance-runtime-limits-provider
+  uid: user/perf-default
+- role: performance-runtime-limits-provider
+  uid: user/perf-smp
+- role: verification-provider
+  uid: /verification/test-failures/default
+- role: verification-provider
+  uid: /verification/test-failures/ttest01
+name: Board of Package User
+non-functional-type: design-target
+rationale: null
+references: []
+requirement-type: non-functional
+target-hash: _xQeTNJwSla2bVbhWPVcI0emLk2bE_GVQfvzt9CN84k=
+text: |
+  The ${.:/name} shall be a ${/glossary/target:/term}.
+type: requirement
