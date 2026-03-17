@@ -1,0 +1,15 @@
+[submodule "modules/rsb"]
+	path = modules/rsb
+	url = ../rtems-source-builder
+[submodule "modules/rtems"]
+	path = modules/rtems
+	url = ../rtems
+[submodule "modules/rtems-docs"]
+	path = modules/rtems-docs
+	url = ../rtems-docs
+[submodule "modules/rtems-docs-ecss"]
+	path = modules/rtems-docs-ecss
+	url = ../rtems-docs-ecss
+[submodule "modules/rtems-tools"]
+	path = modules/rtems-tools
+	url = ../rtems-tools
