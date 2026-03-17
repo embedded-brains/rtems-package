@@ -1,0 +1,29 @@
+From 85e6e9613e3a43983791f4669055b10edcb8e3c4 Mon Sep 17 00:00:00 2001
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Date: Wed, 25 Sep 2024 10:32:02 +0200
+Subject: [PATCH 2/2] Improve file name matching
+
+---
+ src/util.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/util.cpp b/src/util.cpp
+index 3212ccedd..992c72ce8 100644
+--- a/src/util.cpp
++++ b/src/util.cpp
+@@ -2897,6 +2897,12 @@ FileDef *findFileDef(const FileNameLinkedMap *fnMap,const QCString &n,bool &ambi
+       {
+         FileDef *fd = fd_p.get();
+         QCString fdStripPath = stripFromIncludePath(fd->getPath());
++        if (fdStripPath == pathStripped)
++        {
++          count = 1;
++          lastMatch=fd;
++          break;
++        }
+         if (path.isEmpty() ||
+             (!pathStripped.isEmpty() && fdStripPath.endsWith(pathStripped)) ||
+             (pathStripped.isEmpty() && fdStripPath.isEmpty()))
+-- 
+2.51.0
+
