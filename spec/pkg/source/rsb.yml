@@ -1,0 +1,38 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+branch: ${.:/component/ident}
+clone-depth: 20
+commit: ${.:/git-commit-head}
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  files:
+  - LICENSE
+  - source-builder/sb/markdown/LICENSE.md
+description: |
+  This repository contains the RTEMS Source Builder.  It may be used to provide
+  the RTEMS tool suite.  It is provided for reference, the tools of this
+  package were not built by the RTEMS Source Builder.
+destination-directory: ${.:/component/deployment-directory}/src/rsb
+enabled-by: true
+links:
+- role: repository
+  uid: ../component
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+origin-branch: master
+origin-commit: ${.:/git-commit-head}
+origin-commit-url: https://gitlab.rtems.org/rtems/tools/rtems-source-builder/-/commit/${.:/origin-commit}
+origin-fetch: []
+origin-url: https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git
+pkg-type: workspace
+symbolic-links: []
+post-clone-commands: []
+directory: ${.:/component/workspace-directory}/modules/rsb
+type: pkg
+workspace-type: repository

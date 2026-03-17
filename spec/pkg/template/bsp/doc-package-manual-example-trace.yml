@@ -1,0 +1,88 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  content: |
+    $${.:/push-enabled-by:pkg.feature.qual}
+    .. important::
+
+        The event recording support is a feature which is not yet available in
+        the pre-qualified feature set provided by the package.  It is planned
+        to make it available in package version 7.
+    $${.:/pop-enabled-by}
+
+    The event recording support can be used to trace thread switches, interrupts,
+    and custom events.  See also
+    `RTEMS User Manual - Tracing - Event Recording <$${/pkg/deployment/doc-rtems:/directory}/user/tracing/eventrecording.html>`__.
+    In this example, we let an application run for three seconds and then view
+    the event records on the host.  Firstly, we build an example application
+    which has the event recording enabled in the application configuration.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) clean,cwd=%(/pkg/source/example-trace:/directory),hide=1}
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash),cwd=%(/pkg/source/example-trace:/directory)}
+
+    If you get a different output, then there is something wrong with the
+    unpacked archive or your host computer setup.
+
+    Try to run the example application
+    :file:`b-$${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}/example-trace.exe`
+    on a simulator or a target platform.  The command below stores the output of
+    the example application run also in the file
+    :file:`b-$${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}/log.txt`
+    which we will use in the next step.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) run,cwd=%(/pkg/source/example-trace:/directory)}
+
+    In the
+    :file:`b-$${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}/log.txt`
+    there is now a serialization of the event records between the ``*** BEGIN OF
+    RECORDS BASE64 ***`` and ``*** END OF RECORDS BASE64 ***`` lines.  We use the
+    command line tool :file:`rtems-record-lttng` to convert the dump into files
+    in the `Common Trace Format (CTF) <https://diamon.org/ctf/>`__ with some
+    extra support for the
+    `Linux Trace Toolkit Next Generation (LTTng) <https://lttng.org/>`__.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) ctf,cwd=%(/pkg/source/example-trace:/directory)}
+
+    This format can be analysed using `babeltrace <https://babeltrace.org/>`__ or
+    `Eclipse Trace Compass <https://www.eclipse.org/tracecompass/>`__.  Please
+    install these tools yourself.  The :file:`babeltrace` command gives you a log
+    in text form.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) babeltrace,cwd=%(/pkg/source/example-trace:/directory)}
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) clean all,cwd=%(/pkg/source/example-trace:/directory),hide=1}
+  enabled-by: true
+  label: null
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/example-trace
+  - hash: null
+    header: Build an event recording and tracing example application
+    header-is-optional: false
+    name: document-section
+    role: input-to
+    section-key: example
+    uid: doc-package-manual-examples-by-component
+  - hash: null
+    name: run-actions-member
+    params:
+      bsp: $${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}
+      working-directory: $${/pkg/source/example-trace:/directory}
+    role: input-to
+    uid: build-examples-extra
+  pkg-type: sphinx-section
+  type: pkg
+copyrights:
+- Copyright (C) 2024 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

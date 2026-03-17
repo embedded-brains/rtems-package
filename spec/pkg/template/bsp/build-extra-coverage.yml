@@ -1,0 +1,62 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  copyrights-by-license: {}
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-bsp-extra-coverage
+  directory-state-type: patterns
+  enabled-by: RTEMS_GCOV_COVERAGE
+  files: []
+  hash: null
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: ../../../source/rtems
+  - hash: null
+    name: build-spec
+    role: input
+    uid: ../../../source/rtems
+  - hash: null
+    name: tools
+    role: input
+    uid: ../../gcc
+  - hash: null
+    name: tools
+    role: input
+    uid: ../../../deployment/rtems-tools
+  - hash: null
+    name: tools
+    role: input
+    uid: ../../../deployment/rtems-tool-suite
+  - hash: null
+    name: config
+    role: input
+    uid: config-extra-coverage
+  - hash: null
+    output-name: build
+    params:
+      configure-options: []
+    role: make
+    uid: ../../../make/bsp
+  - hash: null
+    name: member
+    role: input-to
+    uid: /pkg/deployment/archive
+  patterns:
+  - exclude: []
+    include: '**/*'
+  pkg-type: directory-state
+  type: pkg
+copyrights:
+- Copyright (C) 2022 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

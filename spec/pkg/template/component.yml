@@ -1,0 +1,149 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions:
+- action: set-default
+  enabled-by: true
+  path: /package-version
+  value: '1'
+- action: set-default
+  enabled-by: true
+  path: /rtems-version
+  value: '6'
+- action: set-default
+  enabled-by: true
+  path: /prefix-directory
+  value: /opt
+- action: substitute
+  enabled-by: true
+  path: /prefix-directory
+- action: set-default
+  enabled-by: true
+  path: /ident
+  value: ${.:/name}/${.:/package-version}
+- action: set-default
+  enabled-by: true
+  path: /document-variant
+  value: ${.:/ident}
+- action: set-default
+  enabled-by: true
+  path: /package-ident
+  value: ${.:/ident}
+- action: set-default
+  enabled-by: true
+  path: /package-directory
+  value: rtems-${.:/name}-${.:/package-version}
+- action: set-default
+  enabled-by: true
+  path: /pkgversion
+  value: ${.:/package-directory}
+- action: set-default
+  enabled-by: true
+  path: /deployment-directory
+  value: ${.:/prefix-directory}/${.:/package-directory}
+- action: set-default
+  enabled-by: true
+  path: /build-directory
+  value: ${.:/deployment-directory}/build
+- action: set-default
+  enabled-by: true
+  path: /documentation-directory
+  value: ${.:/deployment-directory}/doc
+- action: set-default
+  enabled-by: true
+  path: /contract-name
+  value: the RTEMS SDK
+- action: set-default
+  enabled-by: true
+  path: /document-date
+  value: '9999-12-31'
+- action: set-default
+  enabled-by: true
+  path: /document-html-footer
+  value: |
+    <p>
+    This document is under the CC-BY-SA-4.0 license.
+    </p>
+- action: set-default
+  enabled-by: true
+  path: /document-latex-footer-right
+  value: |
+    \tiny
+    This document is under the CC-BY-SA-4.0 license.
+- action: set-default
+  enabled-by: true
+  path: /document-latex-geometry
+  value: includeheadfoot, headheight=10mm, headsep=5mm, footskip=5mm
+- action: set-default
+  enabled-by: true
+  path: /document-latex-header-left
+  value: |
+    \tiny
+    This document is part of the ${.:/package-ident} package.
+- action: set-default
+  enabled-by: true
+  path: /document-latex-sphinxsetup
+  value: hmargin={20mm, 20mm}, vmargin={10mm, 24mm}
+- action: set-default
+  enabled-by: true
+  path: /document-latex-style
+  value: project
+- action: set-default
+  enabled-by: true
+  path: /document-package-title
+  value: RTEMS
+- action: set-default
+  enabled-by: true
+  path: /package-short
+  value: $${/glossary/sdk:/term}
+- action: set-default
+  enabled-by: true
+  path: /package-long
+  value: RTEMS Software Development Kit
+- action: set-default
+  enabled-by: true
+  path: /project-name
+  value: RTEMS SDK
+- action: set-default
+  enabled-by: true
+  path: /project-contract-title
+  value: Unknown Contract
+- action: set-default
+  enabled-by: true
+  path: /project-contract-bib-ref
+  value: '`UnknownContract`'
+- action: set-default
+  enabled-by: true
+  path: /project-contract-number
+  value: Unknown Contract Number
+- action: set-default
+  enabled-by: true
+  path: /arch
+  value: arch
+- action: set-default
+  enabled-by: true
+  path: /bsp
+  value: bsp
+- action: set-default
+  enabled-by: true
+  path: /bsp-extra
+  value: ''
+- action: set-default
+  enabled-by: true
+  path: /bsp-family
+  value: bsp-family
+- action: set-default
+  enabled-by: true
+  path: /bsp-qual-only
+  value: ''
+- action: set-default
+  enabled-by: true
+  path: /config
+  value: ''
+copyrights:
+- Copyright (C) 2020, 2024 embedded brains GmbH & Co. KG
+enabled-by: true
+enabled-set-actions: []
+enabled-set-feedback-mapping: {}
+links: []
+pkg-type: template
+template-type: component
+type: pkg

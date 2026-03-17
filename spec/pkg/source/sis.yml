@@ -1,0 +1,49 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+archive-file: ${.:/component/workspace-directory}/src/sis-2.30.tar.bz2
+archive-hash: vbY9jObdd5tgsG6lCaKRJx9NUtJai2C1uMYZWTeQrWSyW22boAH263nEYUB3B0l1CzdJ2yDK6wOQytB1i8KGTA==
+archive-patches:
+- file: src/sis-2.30-update-texinfo.patch
+  hash: dG4j6BHowPxahwFOEIDpoH5ZX8QY-0NKPDiNB-4MkjOI2EToWoYQnECkIn7IfH5sekNLKo_m-JtKYh8C2_5kmA==
+- file: src/sis-2.30-Add-basic-DSU-support-present-on-GR712RC.patch
+  hash: 33Io_wdPivo2_UezGTO1xk-S__PSoW1jbe71Nb8lXzU23QcWtnUnyulZz9TBxTZg7bIMurzGwgMqlrLUDdwtOw==
+- file: src/sis-2.30-grlib-Improve-L2C-support.patch
+  hash: rFwA_oBv9PxCLOyDChQc4BzV2XSXugGKN9CO-3F4kZFklLZo_8kQGn9N02RaP_Z5kU41AqCMSNYzWy3G81zX5Q==
+- file: src/sis-2.30-gcc15-0001-pstat-intack-Add-missing-parameter.patch
+  hash: va2R9mNYZuyPfjy-232H78z6y0jc6Ue5EOLAFt11ncfrR9o8dxMpt0Yq-AOEcLpT1gv5i_AnOD7KaV5mpESyjQ==
+- file: src/sis-2.30-gcc15-0002-event-Fix-number-of-parameters.patch
+  hash: 1AIA6WYlI-Su5WuBSK638M3s7pi22s8EtTBWYVNdijkd4-wNBrSPtkihqr2UZf7RFHVWuoeGdQf8DMbkL_EQlQ==
+- file: src/sis-2.30-gcc15-0003-leon3-Use-correct-parameters-in-add.patch
+  hash: bNExm0hTEWR_xggEToIFzCCdz2jMfnBnbB8AFEyYJgNmLj5BnA461cLPLkGL5eFTtiBvYpO2EwjBc-Grmcaehw==
+- file: src/sis-2.30-gcc15-0004-func-signals-Fix-parameters.patch
+  hash: Y2rUuZpRpUajxTkHLoNnthOYgxmyMHJt4AQIWxB5jsPTYHT4LgGyGgsGbPMCA9Q7x_oY1-yxRDnRb38lcB5mcA==
+- file: src/sis-2.30-gcc15-0005-sim_create_inferior-Don-t-call-with-arguments.patch
+  hash: oHcyXeI9rQrfhFA2RIVrhcOY-CQsj7D54d6KGShl9PLF6NSN1y5J8fJQVyoP3ahoJ76Xo1EQ4A4mC0YPzK261g==
+symbolic-links: []
+archive-url: https://git.rtems.org/sis/snapshot/sis-2.30.tar.bz2
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  description: |
+    The SIS sources are used to provide host tools to simulate
+    ${/glossary/target:/plural}.
+description: |
+  SIS sources.
+destination-directory: ${.:/component/deployment-directory}/src
+enabled-by:
+  and:
+  - not: pkg.feature.rsb
+  - or:
+    - pkg.arch.sparc
+    - pkg.arch.riscv
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+pkg-type: workspace
+type: pkg
+workspace-type: archive
