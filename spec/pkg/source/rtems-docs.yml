@@ -1,0 +1,34 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+branch: ${.:/component/ident}
+clone-depth: null
+commit: ${.:/git-commit-head}
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+description: |
+  This repository contains the RTEMS Documentation sources.  It is used to
+  provide the RTEMS Documentation shipped by this package.
+destination-directory: ${.:/component/deployment-directory}/src/rtems-docs
+enabled-by: true
+links:
+- role: repository
+  uid: ../component
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+origin-branch: '6'
+origin-commit: 2c88912893ebbcc3b9fa14d4fcc100c42252d0df
+origin-commit-url: https://gitlab.rtems.org/rtems/docs/rtems-docs/-/commit/${.:/origin-commit}
+origin-fetch: []
+origin-url: https://gitlab.rtems.org/rtems/docs/rtems-docs.git
+pkg-type: workspace
+symbolic-links: []
+post-clone-commands: []
+directory: ${.:/component/workspace-directory}/modules/rtems-docs
+type: pkg
+workspace-type: repository

@@ -1,0 +1,31 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- action: directory-state-discard-and-clear
+  enabled-by: true
+  output-name: build
+- action: for-each
+  enabled-by: true
+  member-actions:
+  - action: subprocess
+    command:
+    - make
+    - clean
+    - all
+    - RTEMS_CPU=${.:/component/arch}
+    - RTEMS_BSP=${.:/params/bsp}
+    enabled-by: true
+    env: []
+    expected-return-code: 0
+    working-directory: ${.:/params/working-directory}
+  - action: directory-state-add-files
+    enabled-by: true
+    output-name: build
+    path: ${.:/params/working-directory}
+    pattern: b-${.:/component/arch}-${.:/params/bsp}/**/*
+copyrights:
+- Copyright (C) 2024 embedded brains GmbH & Co. KG
+enabled-by: true
+links: []
+params: {}
+pkg-type: run-actions
+type: pkg

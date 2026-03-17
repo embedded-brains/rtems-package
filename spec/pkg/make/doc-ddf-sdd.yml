@@ -1,0 +1,17 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- action: subprocess
+  command:
+  - ${/pkg/deployment/doxygen:/directory}/bin/doxygen
+  - ${.:/input/config/file}
+  enabled-by: true
+  env: []
+  expected-return-code: 0
+  working-directory: ${.:/input/source/directory}
+copyrights:
+- Copyright (C) 2022 embedded brains GmbH & Co. KG
+enabled-by: true
+links: []
+params: {}
+pkg-type: run-actions
+type: pkg

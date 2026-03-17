@@ -1,0 +1,30 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+archive-file: ${.:/component/workspace-directory}/src/pkgconf-2.3.0.tar.xz
+archive-hash: hp_gp6Lgbp2jf_ZyuZHa1gqafJ3yxlt4sqpw26EJIGUPuUbVqcgBnqVKUQg1rMLrQkQJL6NtAzm9Z2T_hOhULA==
+archive-patches: []
+symbolic-links: []
+archive-url: https://distfiles.ariadne.space/pkgconf/pkgconf-2.3.0.tar.xz
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  description: |
+    The pkgconfig sources are used to provide a host tool which is used to
+    query build settings of a deployed BSP.
+  files:
+  - COPYING
+description: |
+  pkgconfig sources.
+destination-directory: ${.:/component/deployment-directory}/src
+enabled-by: pkg.feature.x86_64-w64
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+pkg-type: workspace
+type: pkg
+workspace-type: archive

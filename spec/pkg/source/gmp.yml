@@ -1,0 +1,37 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+archive-file: src/gmp-6.3.0.tar.xz
+archive-hash: 6FoNq1GViJlIo0YhifDgWY0zHTRXYS4tM1B5nbouJEMW0lb4Fh31IZU46wA-S1ND-YmqoA-WMhVZBj7YyPKf0g==
+archive-patches:
+- file: src/gmp-6.3.0-fix-for-gcc-15-001.patch
+  hash: PBp1GJcPWOqZqibkkAYSBIRdoakWcaYOFHUJN13S_6Yrokpe5ODm1FD96KimbIpI5SMxR9guj4Fo7a8uOS8Ikg==
+- file: src/gmp-6.3.0-fix-for-gcc-15-002.patch
+  hash: mF3jtg3_sK_rqjeGvHwdclr6f9HNUNAuhOzE-rrNi1U0IaEo8_sWSorsDo_-rennW_jMMROAsXuJ96cHM95hng==
+- file: src/gmp-6.3.0-fix-for-gcc-15-003.patch
+  hash: F6iLmoXN6FIaeCsYBqfGtAxZyy8Qk7dbSdIqIeB-a9BOXS8hkp2x7DPKB41PvRh4mSKCca9XWHpFfxm0yRLGWA==
+symbolic-links: []
+archive-url: https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  description: |
+    The GMP library is used by host tools such as GDB and GCC.
+  files:
+  - COPYINGv3
+  - COPYING.LESSERv3
+description: |
+  GMP sources.
+destination-directory: ${.:/component/deployment-directory}/src
+enabled-by:
+  not: pkg.feature.rsb
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: /pkg/deployment/archive
+pkg-type: workspace
+type: pkg
+workspace-type: archive

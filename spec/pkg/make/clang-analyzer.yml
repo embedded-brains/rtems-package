@@ -1,0 +1,89 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- action: remove-tree
+  enabled-by: true
+  missing-ok: true
+  path: ${.:/params/build-directory}
+- action: remove-glob
+  enabled-by: true
+  path: ${.:/params/working-directory}
+  patterns:
+  - .lock-waf*
+  - .waf*
+  remove-tree: true
+- action: subprocess
+  command:
+  - scan-build
+  - -o
+  - ${.:/params/deployment-directory}
+  - --use-cc=${.:/component/deployment-directory}/bin/${.:/component/arch}-rtems${.:/component/rtems-version}-gcc
+  - --use-c++=${.:/component/deployment-directory}/bin/${.:/component/arch}-rtems${.:/component/rtems-version}-g++
+  - --analyzer-target=${.:/component/clang-target}-rtems-unknown
+  - ./waf
+  - configure
+  - --out=${.:/params/build-directory}
+  - --prefix=${.:/component/build-directory}
+  - --rtems-tools=${.:/component/deployment-directory}
+  - --rtems-config=${.:/input/config/file}
+  - --rtems-specs=${.:/input/build-spec/directory}/spec/build
+  enabled-by: true
+  env:
+  - action: path-prepend
+    name: PATH
+    value: ${.:/params/env-path}
+  - action: set
+    name: C_INCLUDE_PATH
+    value: ${.:/params/env-c-include-path}
+  - action: set
+    name: CPLUS_INCLUDE_PATH
+    value: ${.:/params/env-cplus-include-path}
+  expected-return-code: 0
+  working-directory: ${.:/params/working-directory}
+- action: subprocess
+  command:
+  - scan-build
+  - -o
+  - ${.:/params/deployment-directory}
+  - --use-cc=${.:/component/deployment-directory}/bin/${.:/component/arch}-rtems${.:/component/rtems-version}-gcc
+  - --use-c++=${.:/component/deployment-directory}/bin/${.:/component/arch}-rtems${.:/component/rtems-version}-g++
+  - --analyzer-target=${.:/component/clang-target}-rtems-unknown
+  - ./waf
+  - build
+  enabled-by: true
+  env:
+  - action: path-prepend
+    name: PATH
+    value: ${.:/params/env-path}
+  - action: set
+    name: C_INCLUDE_PATH
+    value: ${.:/params/env-c-include-path}
+  - action: set
+    name: CPLUS_INCLUDE_PATH
+    value: ${.:/params/env-cplus-include-path}
+  expected-return-code: 0
+  working-directory: ${.:/params/working-directory}
+- action: remove-tree
+  enabled-by: true
+  missing-ok: false
+  path: ${.:/params/build-directory}
+- action: remove-glob
+  enabled-by: true
+  path: ${.:/params/working-directory}
+  patterns:
+  - .lock-waf*
+  - .waf*
+  remove-tree: true
+copyrights:
+- Copyright (C) 2020 EDISOFT
+- Copyright (C) 2023 embedded brains GmbH & Co. KG
+enabled-by: true
+links: []
+params:
+  build-directory: ${.:/component/build-directory}/clang-analyzer
+  deployment-directory: ${.:/output/deployment/directory}
+  env-c-include-path: ${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include:${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include-fixed:${.:/component/deployment-directory}/${.:/component/arch}-rtems${.:/component/rtems-version}/include:${.:/component/deployment-directory}/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/bsp}-qual-only/lib/include
+  env-cplus-include-path: ${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include/c++:${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include/c++/${.:/component/arch}-rtems${.:/component/rtems-version}:${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include/c++/backward:${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include:${.:/component/deployment-directory}/lib/gcc/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/gcc-version}/include-fixed:${.:/component/deployment-directory}/${.:/component/arch}-rtems${.:/component/rtems-version}/include:${.:/component/deployment-directory}/${.:/component/arch}-rtems${.:/component/rtems-version}/${.:/component/bsp}-qual-only/lib/include
+  env-path: ${.:/component/deployment-directory}/bin
+  working-directory: ${../source/rtems:/directory}
+pkg-type: run-actions
+type: pkg

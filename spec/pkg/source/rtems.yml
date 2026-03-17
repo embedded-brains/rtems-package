@@ -1,0 +1,52 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+branch: ${.:/component/ident}
+clone-depth: null
+commit: ${.:/git-commit-head}
+copyrights:
+- Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
+copyrights-by-license:
+  description: |
+    RTEMS and all third-party software distributed with RTEMS which may be
+    linked to the application is licensed under permissive open source
+    licenses.  This means that the licenses do not propagate to the
+    application software.  Most of the original RTEMS code is now under the
+    BSD-2-Clause license.  Some code of RTEMS is under a legacy license, the
+    modified GPL-2.0 or later license with an exception for static linking.
+    It exposes no license requirements on application code.  RTMES is a
+    collection of software from several sources.  Each file may have its own
+    copyright/license that is embedded in the source file.
+  files:
+  - LICENSE
+description: |
+  This repository contains the RTEMS sources.  It is used to provide the BSPs
+  shipped by this package.
+destination-directory: ${.:/component/deployment-directory}/src/rtems
+enabled-by: true
+links:
+- role: repository
+  uid: ../component
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+origin-branch: '6'
+origin-commit: ac16e3b9611297697ffd8f6d80166c2c05f745e5
+origin-commit-url: https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/${.:/origin-commit}
+origin-fetch:
+- enabled-by: pkg.feature.compare-specs
+  value: +6685338e8308e46467c30b96b1ce36cb3a180e39:esa/v4-spec
+- enabled-by: pkg.feature.compare-specs
+  value: +78d0fe787c5a7f7287adb4973229d1495227731e:esa/v5-spec
+- enabled-by: pkg.feature.compare-specs
+  value: +2029307cc5de4b18dc51262a8cc8b66196bbbe69:esa/v6-spec
+origin-url: https://gitlab.rtems.org/rtems/rtos/rtems.git
+pkg-type: workspace
+symbolic-links: []
+post-clone-commands: []
+directory: ${.:/component/workspace-directory}/modules/rtems
+type: pkg
+workspace-type: repository

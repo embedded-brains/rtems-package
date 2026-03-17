@@ -1,0 +1,22 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  author: The RTEMS Project contributors
+  enabled-by: true
+  links: []
+  organization: embedded brains GmbH & Co. KG
+  reference-type: manual
+  title: RTEMS Qualification Software Design Document [${.:/ident}], Git Commit $${/pkg/source/rtems:/commit}
+  type: reference
+  work-hash: null
+  work-url: ${.:/documentation-directory}/sdd/html/index.html
+  year: '2025'
+copyrights:
+- Copyright (C) 2025 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

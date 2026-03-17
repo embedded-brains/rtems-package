@@ -1,0 +1,35 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+copyrights:
+- Copyright (C) 2023 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+directory: ${.:/component/deployment-directory}
+directory-state-type: explicit
+enabled-by:
+  not: pkg.feature.rsb
+files: []
+hash: null
+links:
+- hash: null
+  name: component
+  role: input
+  uid: /pkg/component
+- hash: null
+  name: source
+  role: input
+  uid: /pkg/source/mpfr
+- hash: null
+  name: source
+  role: input
+  uid: /pkg/deployment/gmp
+- hash: null
+  output-name: deployment
+  params:
+    host: []
+  role: make
+  uid: /pkg/make/mpfr
+- hash: null
+  name: member
+  role: input-to
+  uid: /pkg/deployment/archive
+pkg-type: directory-state
+type: pkg

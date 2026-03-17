@@ -1,0 +1,64 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  content: |
+    The package contains an example application.  Build it to check that the
+    tools work on your host computer.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-qual-only:dash) clean,cwd=%(/pkg/source/example:/directory),hide=1}
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-qual-only:dash),cwd=%(/pkg/source/example:/directory)}
+
+    If you get a different output, then there is something wrong with the
+    unpacked archive or your host computer setup.
+
+    Try to run the example application
+    :file:`b-$${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-qual-only:dash}/example.exe`
+    on a simulator or a target platform.
+
+    $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-qual-only:dash) run,cwd=%(/pkg/source/example:/directory)}
+
+    If you get a different output, then there is something wrong with the
+    unpacked archive or your host computer setup.
+  enabled-by: true
+  label: null
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: source
+    role: input
+    uid: /pkg/source/example
+  - hash: null
+    header: Build an example application
+    header-is-optional: false
+    name: document-section
+    role: input-to
+    section-key: example
+    uid: doc-package-manual-examples-by-component
+  - hash: null
+    name: run-actions-member
+    params:
+      bsp: $${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-extra:dash}
+      working-directory: $${/pkg/source/example:/directory}
+    role: input-to
+    uid: build-examples-extra
+  - hash: null
+    name: run-actions-member
+    params:
+      bsp: $${.:/component/bsp}$${.:/component/config:dash}$${.:/component/bsp-qual-only:dash}
+      working-directory: $${/pkg/source/example:/directory}
+    role: input-to
+    uid: build-examples-qual-only
+  pkg-type: sphinx-section
+  type: pkg
+copyrights:
+- Copyright (C) 2020, 2024 embedded brains GmbH & Co. KG
+enabled-by: true
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg

@@ -1,0 +1,30 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+copy-to-buildspace-actions:
+- action: copy-and-substitute
+  enabled-by: true
+  input-name: .
+  output-name: .
+  source: null
+  target: null
+copyrights:
+- Copyright (C) 2020, 2026 embedded brains GmbH & Co. KG
+copyrights-by-license: {}
+destination-directory: ${.:/component/deployment-directory}/src/example-trace
+enabled-by: true
+files: []
+links:
+- hash: null
+  name: component
+  role: input
+  uid: ../component
+- hash: null
+  name: member
+  role: input-to
+  uid: ../deployment/archive
+patterns:
+- exclude: []
+  include: '**/*'
+pkg-type: workspace
+directory: ${.:/component/workspace-directory}/src/example-trace
+type: pkg
+workspace-type: directory
