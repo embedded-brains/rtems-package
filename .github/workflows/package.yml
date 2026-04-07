@@ -1,0 +1,70 @@
+# SPDX-License-Identifier: BSD-2-Clause
+
+# Copyright (C) 2026 embedded brains GmbH & Co. KG
+
+name: Package
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/package.yml
+      - Makefile
+      - config/**
+      - modules/**
+      - spec/**
+      - src/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/package.yml
+      - Makefile
+      - config/**
+      - modules/**
+      - spec/**
+      - src/**
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/${{ github.repository }}:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      UV_CACHE_DIR: /.cache/uv
+      UV_LINK_MODE: copy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Make
+        run: |
+          git config --global --add safe.directory $PWD
+          make GIT_OPTIONS=--do-not-use-git > log.txt 2>&1
+      - name: Logs
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: Logs
+          path: log.txt
+          overwrite: true
+      - name: Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifacts
+          path: |
+            rtems-*/build/*.pdf
+            rtems-*/build/*.tar.xz
+            rtems-*/build/package-summary.rst
+          overwrite: true
