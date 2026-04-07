@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (C) 2026 embedded brains GmbH & Co. KG
+spec:
+  cache-directory: cache
+  paths:
+    config/gr712rc/target: /target/
+    config/gr740/target: /target/
+    modules/rtems/spec: /
+    spec/target: /target/
+  spec-type-root-uid: /spec/root

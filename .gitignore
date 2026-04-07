@@ -1,0 +1,5 @@
+/.python-version
+/.venv
+/config-cache
+/metrixpp.db
+/spec-cache
