@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: BSD-2-Clause
+
+# Copyright (C) 2026 embedded brains GmbH & Co. KG
+
+extends:
+  - '@commitlint/config-conventional'
+
+# see https://commitlint.js.org/reference/rules.html
+rules:
+  # Enforce signed-off-by
+  signed-off-by:
+    - 2
+    - 'always'
+    - 'Signed-off-by:'
+
+  # Override the allowed types
+  type-enum:
+    - 2
+    - 'always'
+    - [ 'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore', 'ci', 'revert', 'spec' ]
+
+  # Enforce the subject to start with a capital letter
+  subject-case:
+    - 2
+    - 'always'
+    - 'sentence-case'
+
+  # Limit length of subject
+  subject-max-length:
+    - 2
+    - 'always'
+    - 80
+  subject-min-length:
+    - 2
+    - 'always'
+    - 5
