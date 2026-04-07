@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: BSD-2-Clause
+
+# Copyright (C) 2026 embedded brains GmbH & Co. KG
+
+name: Package
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/package.yml
+      - Makefile
+      - config/**
+      - modules/**
+      - spec/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/package.yml
+      - Makefile
+      - config/**
+      - modules/**
+      - spec/**
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/${{ github.repository }}:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      UV_CACHE_DIR: /.cache/uv
+      UV_LINK_MODE: copy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Make
+        run: |
+          git config --global --add safe.directory $PWD
+          make GIT_OPTIONS=--do-not-use-git > log.txt 2>&1
+      - name: Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifacts
+          path: |
+            log.txt
+            /opt/rtems-*/build/*.pdf
+            /opt/rtems-*/build/*.tar.xz
+            /opt/rtems-*/build/package-summary.rst
+            /opt/rtems-*/doc/**/*.pdf
+          overwrite: true
