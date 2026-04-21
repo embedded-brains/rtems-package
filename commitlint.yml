@@ -17,7 +17,18 @@ rules:
   type-enum:
     - 2
     - 'always'
-    - [ 'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore', 'ci', 'revert', 'spec' ]
+    - - 'chore'
+      - 'ci'
+      - 'config'
+      - 'docs'
+      - 'modules'
+      - 'fix'
+      - 'refactor'
+      - 'revert'
+      - 'spec'
+      - 'style'
+      - 'test'
+      - 'feat'
 
   # Enforce the subject to start with a capital letter
   subject-case:
