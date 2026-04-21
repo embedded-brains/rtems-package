@@ -64,7 +64,7 @@ jobs:
         with:
           name: Artifacts
           path: |
-            rtems-*/build/*.pdf
-            rtems-*/build/*.tar.xz
-            rtems-*/build/package-summary.rst
+            rtems-*/*.pdf
+            rtems-*/*.tar.xz
+            rtems-*/package-summary.rst
           overwrite: true
