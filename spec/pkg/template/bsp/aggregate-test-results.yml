@@ -16,7 +16,7 @@ attributes:
     role: input-to
     uid: /pkg/deployment/doc-package-summary
   pkg-type: test-aggregator
-  report-file: $${doc-djf-tr:/directory}/html/reports.html
+  report-file: $${doc-djf-tr:/directory}/reports.html
   type: pkg
 copyrights:
 - Copyright (C) 2022 embedded brains GmbH & Co. KG

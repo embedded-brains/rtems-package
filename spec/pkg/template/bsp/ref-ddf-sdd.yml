@@ -9,7 +9,7 @@ attributes:
   title: RTEMS Qualification Software Design Document [${.:/ident}], Git Commit $${/pkg/source/rtems:/commit}
   type: reference
   work-hash: null
-  work-url: ${.:/documentation-directory}/sdd/html/index.html
+  work-url: $${.:/component/documentation-directory:relpath %(*:/directory)}/sdd/index.html
   year: '2025'
 copyrights:
 - Copyright (C) 2025 embedded brains GmbH & Co. KG

@@ -17,11 +17,11 @@ attributes:
     name: tagfile
     role: input
     uid: doc-ddf-sdd-tagfile-early
-  - directory: html
+  - directory: .
     name: icd
     role: document
     uid: doc-ts-icd
-  - directory: html
+  - directory: .
     name: sdd
     role: document
     uid: doc-ddf-sdd
@@ -29,19 +29,19 @@ attributes:
     name: source
     role: document
     uid: rtems-qual-only
-  - directory: html
+  - directory: .
     name: srs
     role: document
     uid: doc-ts-srs
-  - directory: html
+  - directory: .
     name: suitp
     role: document
     uid: doc-djf-suitp
-  - directory: html
+  - directory: .
     name: svr
     role: document
     uid: doc-djf-svr
-  - directory: html
+  - directory: .
     name: svs
     role: document
     uid: doc-djf-svs
