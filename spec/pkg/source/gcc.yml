@@ -17,7 +17,7 @@ copyrights-by-license:
   - COPYING3.LIB
 description: |
   This repository contains the GCC sources.  It is used to build host tools.
-destination-directory: ${.:/component/deployment-directory}/src/gcc
+destination-directory: ${.:/component/deployment-directory}/src
 enabled-by:
   not: pkg.feature.rsb
 links:

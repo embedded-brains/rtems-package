@@ -14,7 +14,7 @@ copyrights-by-license:
 description: |
   The Newlib sources are used to provide the ${/glossary/target-arch:/term}
   standard C library.
-destination-directory: ${.:/component/deployment-directory}/src/newlib
+destination-directory: ${.:/component/deployment-directory}/src
 enabled-by:
   not: pkg.feature.rsb
 links:
