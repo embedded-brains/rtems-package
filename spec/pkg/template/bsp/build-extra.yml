@@ -23,9 +23,7 @@ attributes:
     path: $${.:/directory}/${.:/component/arch}/${.:/bsp}${.:/component/config:dash}${.:/component/bsp-extra:dash}
     role: input-to
     uid: membench
-  patterns:
-  - exclude: []
-    include: '**/*'
+  patterns: '**/*'
   pkg-type: directory-state
   type: pkg
 copyrights:

@@ -10,6 +10,7 @@ copyrights:
 - Copyright (C) 2020, 2026 embedded brains GmbH & Co. KG
 copyrights-by-license: {}
 destination-directory: ${.:/component/deployment-directory}/src/example-trace
+directory: ${.:/component/workspace-directory}/src/example-trace
 enabled-by: true
 files: []
 links:
@@ -21,10 +22,7 @@ links:
   name: member
   role: input-to
   uid: ../deployment/archive
-patterns:
-- exclude: []
-  include: '**/*'
+patterns: '**/*'
 pkg-type: workspace
-directory: ${.:/component/workspace-directory}/src/example-trace
 type: pkg
 workspace-type: directory
