@@ -17,33 +17,33 @@ attributes:
     name: tagfile
     role: input
     uid: doc-ddf-sdd-tagfile-early
-  - directory: .
-    name: icd
-    role: document
+  - path: .
+    resource-key: icd
+    role: resource
     uid: doc-ts-icd
-  - directory: .
-    name: sdd
-    role: document
+  - path: .
+    resource-key: sdd
+    role: resource
     uid: doc-ddf-sdd
-  - directory: .
-    name: source
-    role: document
+  - path: .
+    resource-key: source
+    role: resource
     uid: rtems-qual-only
-  - directory: .
-    name: srs
-    role: document
+  - path: .
+    resource-key: srs
+    role: resource
     uid: doc-ts-srs
-  - directory: .
-    name: suitp
-    role: document
+  - path: .
+    resource-key: suitp
+    role: resource
     uid: doc-djf-suitp
-  - directory: .
-    name: svr
-    role: document
+  - path: .
+    resource-key: svr
+    role: resource
     uid: doc-djf-svr
-  - directory: .
-    name: svs
-    role: document
+  - path: .
+    resource-key: svs
+    role: resource
     uid: doc-djf-svs
   pkg-type: link-hub
   type: pkg
