@@ -8,6 +8,10 @@ enabled-by: true
 files: []
 hash: null
 links:
+- path: .yml
+  resource-key: item-files
+  role: resource
+  uid: ../component
 - hash: null
   name: component
   role: input
