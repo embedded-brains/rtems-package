@@ -16,6 +16,10 @@ attributes:
     name: test-aggregation
     role: input
     uid: aggregate-test-results
+  - hash: null
+    name: images
+    role: input-to
+    uid: doc-djf-tr
   pkg-type: directory-state
   type: pkg
 copyrights:

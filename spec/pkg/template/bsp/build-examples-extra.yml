@@ -17,6 +17,10 @@ attributes:
     role: input
     uid: ../../gcc
   - hash: null
+    name: source
+    role: input
+    uid: deployment-extra
+  - hash: null
     output-name: build
     params: {}
     role: make
