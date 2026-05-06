@@ -32,9 +32,7 @@ attributes:
     name: log
     role: input
     uid: test-log-qual-only-coverage-simulator
-  patterns:
-  - exclude: []
-    include: '**/*.gc??'
+  patterns: '**/*.gc??'
   pkg-type: directory-state
   symbolic-links: []
   type: pkg

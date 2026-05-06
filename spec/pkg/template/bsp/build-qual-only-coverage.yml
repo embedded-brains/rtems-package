@@ -16,9 +16,7 @@ attributes:
     name: source
     role: input
     uid: build-config-qual-only-coverage
-  patterns:
-  - exclude: []
-    include: '**/*'
+  patterns: '**/*'
   pkg-type: directory-state
   type: pkg
 copyrights:

@@ -12,9 +12,7 @@ attributes:
     name: component
     role: input
     uid: component
-  patterns:
-  - exclude: []
-    include: '**/*'
+  patterns: '**/*'
   pkg-type: directory-state
   type: pkg
 copyrights:

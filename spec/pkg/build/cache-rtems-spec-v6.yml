@@ -16,10 +16,8 @@ links:
   name: source
   role: input
   uid: ../source/rtems-spec-v6
-patterns:
-- exclude: []
-  include: '**/*'
+patterns: '**/*'
+pkg-type: directory-state
 spec-paths:
 - spec
-pkg-type: directory-state
 type: pkg

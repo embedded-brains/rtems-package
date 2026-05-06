@@ -41,9 +41,7 @@ attributes:
     name: member
     role: input-to
     uid: /pkg/deployment/archive
-  patterns:
-  - exclude: []
-    include: '**/*'
+  patterns: '**/*'
   pkg-type: directory-state
   type: pkg
 copyrights:

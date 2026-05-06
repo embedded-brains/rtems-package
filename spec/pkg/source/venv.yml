@@ -3,6 +3,7 @@ copyrights:
 - Copyright (C) 2026 embedded brains GmbH & Co. KG
 copyrights-by-license: {}
 destination-directory: ${.:/component/deployment-directory}
+directory: ${.:/component/workspace-directory}
 enabled-by: true
 files: []
 links:
@@ -15,11 +16,8 @@ links:
   role: input-to
   uid: ../deployment/archive
 patterns:
-- exclude: []
-  include:
-  - pyproject.toml
-  - uv.lock
+- pyproject.toml
+- uv.lock
 pkg-type: workspace
-directory: ${.:/component/workspace-directory}
 type: pkg
 workspace-type: directory
