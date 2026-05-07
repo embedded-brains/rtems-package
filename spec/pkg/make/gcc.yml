@@ -95,6 +95,16 @@ actions:
   env: []
   expected-return-code: null
   working-directory: ${.:/params/build-directory}
+- action: subprocess
+  command:
+  - strip
+  - -g
+  - ${.:/output/deployment/glob:*/*.a}
+  - ${.:/output/deployment/glob:*/*.o}
+  enabled-by: pkg.feature.strip-target-libraries
+  env: []
+  expected-return-code: null
+  working-directory: ${.:/params/build-directory}
 - action: remove-tree
   enabled-by: true
   missing-ok: true
