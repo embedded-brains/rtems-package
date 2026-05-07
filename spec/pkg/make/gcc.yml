@@ -90,7 +90,7 @@ actions:
   command:
   - strip
   - -s
-  - ${.:/output/deployment/glob-executables:*/bin/*,*/cc1*,*/collect2*,*/lto1*,*/g++*}
+  - ${.:/output/deployment/glob-executables:*/bin/*,*/cc1*,*/collect2*,*/g++*,*/gnat*,*/lto*}
   enabled-by: true
   env: []
   expected-return-code: null
