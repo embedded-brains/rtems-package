@@ -77,7 +77,8 @@ actions:
   output-name: deployment
 - action: directory-state-move-tree
   enabled-by: true
-  excludes: []
+  excludes:
+  - ${.:/component/binutils-install-excludes}
   output-name: deployment
   prefix: null
   root: ${.:/params/build-directory}/destdir/${.:/output/deployment/directory}

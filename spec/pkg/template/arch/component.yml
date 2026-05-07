@@ -6,8 +6,17 @@ attribute-actions:
   value: ${.:/component/name}/${.:/component/package-version}/${.:/arch}
 - action: set-default
   enabled-by: true
+  path: /binutils-install-excludes
+  value: []
+- action: set-default
+  enabled-by: true
   path: /clang-target
   value: ${.:/arch}
+- action: set-default
+  enabled-by: true
+  path: /gcc-install-excludes
+  value:
+  - /share/info/dir
 - action: set-default
   enabled-by: true
   path: /gcc-languages
