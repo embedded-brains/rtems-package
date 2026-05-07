@@ -82,7 +82,7 @@ actions:
 - action: directory-state-move-tree
   enabled-by: true
   excludes:
-  - /share/info/dir
+  - ${.:/component/gcc-install-excludes}
   output-name: deployment
   prefix: null
   root: ${.:/params/build-directory}/destdir/${.:/output/deployment/directory}
