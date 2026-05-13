@@ -47,19 +47,6 @@ package-clean:
 package-remove:
 	rm -rf $(PREFIX)
 
-TOOL_ARCH ?= sparc
-
-TOOL_GIT_OPTIONS ?= --do-not-use-git
-
-TOOL_LOG_OPTIONS ?= --log-level=INFO
-
-.PHONY: tools
-
-tools: | prepare
-	uv run specbuild $(TOOL_GIT_OPTIONS) $(TOOL_LOG_OPTIONS) \
-	  tools/spec \
-	  tools/arch/$(TOOL_ARCH)
-
 specview: | prepare
 	uv run specwareview --enabled=sparc/gr712rc,sparc,bsps/sparc/leon3,target/simulator,RTEMS_QUAL --validated=no
 	uv run specwareview --enabled=sparc/gr712rc,sparc,bsps/sparc/leon3,target/simulator,RTEMS_QUAL,RTEMS_SMP --validated=no
