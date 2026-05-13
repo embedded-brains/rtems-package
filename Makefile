@@ -24,6 +24,8 @@ package: | prepare
 	uv run specbuild $(GIT_OPTIONS) $(LOG_OPTIONS) \
 	  spec \
 	  modules/rtems/spec \
+	  modules/rtems/spec-pkg-bsps \
+	  modules/rtems/spec-pkg-tools \
 	  modules/rtems-docs-ecss/spec \
 	  modules/rtems-docs-ecss/config/dummy-project \
 	  config/$(PACKAGE_NAME)
