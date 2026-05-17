@@ -83,7 +83,7 @@ run: $$(LOG)
 ctf: $$(CTFDIR)
 
 babeltrace: $$(CTFDIR)
-	babeltrace $$< > $$(BUILDDIR)/babeltrace.txt
+	babeltrace2 $$< > $$(BUILDDIR)/babeltrace.txt
 	head -n 100 $$(BUILDDIR)/babeltrace.txt
 
 clean:
