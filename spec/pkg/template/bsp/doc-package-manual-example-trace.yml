@@ -43,10 +43,10 @@ attributes:
 
     $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) ctf,cwd=%(/pkg/source/example-trace:/directory)}
 
-    This format can be analysed using `babeltrace <https://babeltrace.org/>`__ or
-    `Eclipse Trace Compass <https://www.eclipse.org/tracecompass/>`__.  Please
-    install these tools yourself.  The :file:`babeltrace` command gives you a log
-    in text form.
+    This format can be analysed using `babeltrace2 <https://babeltrace.org/>`__
+    or `Eclipse Trace Compass <https://www.eclipse.org/tracecompass/>`__.
+    Please install these tools yourself.  The :file:`babeltrace2` command gives
+    you a log in text form.
 
     $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) babeltrace,cwd=%(/pkg/source/example-trace:/directory)}
     $${.:/subprocess:args=make RTEMS_CPU=%(.:/component/arch) RTEMS_BSP=%(.:/component/bsp)%(.:/component/config:dash)%(.:/component/bsp-extra:dash) clean all,cwd=%(/pkg/source/example-trace:/directory),hide=1}
