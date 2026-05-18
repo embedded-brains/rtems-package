@@ -66,5 +66,5 @@ jobs:
           path: |
             rtems-*/*.pdf
             rtems-*/*.tar.xz
-            rtems-*/package-summary.rst
+            rtems-*/package-summary.md
           overwrite: true
