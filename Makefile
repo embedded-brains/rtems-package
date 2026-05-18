@@ -34,7 +34,7 @@ package-move-artifacts:
 	mkdir -p $(ARTIFACTS_PREFIX)/delivery $(ARTIFACTS_PREFIX)/internal
 	mv $(PREFIX)/*$(PACKAGE_NAME)-$(PACKAGE_VERSION)-scf.pdf $(ARTIFACTS_PREFIX)/delivery
 	mv $(PREFIX)/*$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.xz $(ARTIFACTS_PREFIX)/delivery
-	mv $(PREFIX)/package-summary.rst $(ARTIFACTS_PREFIX)/internal
+	mv $(PREFIX)/package-summary.md $(ARTIFACTS_PREFIX)/internal
 
 package-update: | prepare
 	cp $(PREFIX)/doc/sparc/$(PACKAGE_NAME)/smp/test-logs/*simulator* test-logs/sparc/$(PACKAGE_NAME)/smp
