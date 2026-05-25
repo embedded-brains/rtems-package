@@ -58,7 +58,7 @@ specview: | prepare
 prepare: $(VENV_MARKER)
 
 $(VENV_MARKER): uv.lock
-	uv sync --all-groups
+	uv sync --refresh --all-groups
 	touch $@
 
 ifndef CI
