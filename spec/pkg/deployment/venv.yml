@@ -11,6 +11,7 @@ actions:
   command:
   - uv
   - sync
+  - --refresh
   - --no-managed-python
   enabled-by: true
   env:
