@@ -11,7 +11,7 @@ attributes:
   build-uids:
   - /cpukit/librtemscpu
   copyrights-by-license: {}
-  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6
+  directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6.2-previous
   directory-state-type: repository-subset
   enabled-by:
     and:
@@ -59,7 +59,7 @@ attributes:
   - hash: null
     name: source-compare-previous
     role: input-to
-    source-compare-key: default
+    source-compare-key: v6..v6.2
     uid: doc-djf-svr
   pkg-type: directory-state
   type: pkg
