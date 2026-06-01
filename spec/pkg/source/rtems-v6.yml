@@ -1,6 +1,6 @@
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 branch: pkg-v6
-clone-depth: null
+clone-depth: 1
 commit: 4f55ae1c76be4f843d4c1dc327c6e67e55f1bf7a
 copyrights:
 - Copyright (C) 2020, 2025 embedded brains GmbH & Co. KG
@@ -14,8 +14,8 @@ links:
   name: component
   role: input
   uid: ../component
-origin-branch: '6'
-origin-commit: ac16e3b9611297697ffd8f6d80166c2c05f745e5
+origin-branch: null
+origin-commit: null
 origin-commit-url: https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/${.:/origin-commit}
 origin-fetch: []
 origin-url: https://gitlab.rtems.org/rtems/rtos/rtems.git
