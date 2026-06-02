@@ -15,21 +15,7 @@ default-timeout-in-seconds: 180.0
 description: |
   Run the tests on the ${/glossary/sis:/term}.
 discard-patterns: []
-do-not-run:
-- example-dev-can.exe
-- example-dev-gpio.exe
-- example-dev-i2c.exe
-- example-dev-qspi.exe
-- example-dev-spi.exe
-- example-dev-uart.exe
-- example-dev-mil1553bc.exe
-- example-libbsd.exe
-- example-lwip-ping.exe
-- lwip-ethif.exe
-- test-peer-uart-i2c.exe
-- test-peer-uart-ping.exe
-- zephyr-dev-can.exe
-- zephyr-device.exe
+do-not-run: []
 enabled-by: sparc
 links:
 - role: proxy-member
