@@ -12,10 +12,7 @@ attributes:
   copyrights-by-license: {}
   directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6.2-current
   directory-state-type: repository-subset
-  enabled-by:
-    and:
-    - RTEMS_QUAL
-    - compare-sources
+  enabled-by: true
   enabled-set-extension: []
   extra-files: []
   files: []
@@ -269,7 +266,10 @@ attributes:
   type: pkg
 copyrights:
 - Copyright (C) 2026 embedded brains GmbH & Co. KG
-enabled-by: true
+enabled-by:
+  and:
+  - RTEMS_QUAL
+  - compare-sources
 links:
 - role: add-package-template
   uid: component

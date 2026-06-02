@@ -13,10 +13,7 @@ attributes:
   copyrights-by-license: {}
   directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6.2-previous
   directory-state-type: repository-subset
-  enabled-by:
-    and:
-    - RTEMS_QUAL
-    - compare-sources
+  enabled-by: true
   enabled-set-extension:
   - enable: INSTALL_LEGACY_MAKEFILES
     enabled-by: true
@@ -65,7 +62,10 @@ attributes:
   type: pkg
 copyrights:
 - Copyright (C) 2025 embedded brains GmbH & Co. KG
-enabled-by: true
+enabled-by:
+  and:
+  - RTEMS_QUAL
+  - compare-sources
 links:
 - role: add-package-template
   uid: component
