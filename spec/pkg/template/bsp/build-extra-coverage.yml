@@ -23,15 +23,7 @@ attributes:
   - hash: null
     name: tools
     role: input
-    uid: ../../gcc
-  - hash: null
-    name: tools
-    role: input
-    uid: ../../../deployment/rtems-tools
-  - hash: null
-    name: tools
-    role: input
-    uid: ../../../deployment/rtems-tool-suite
+    uid: ../../tools
   - hash: null
     name: config
     role: input
