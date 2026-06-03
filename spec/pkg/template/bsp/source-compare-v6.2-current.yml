@@ -6,9 +6,10 @@ attributes:
   - source: ${.:/component/build-directory}/spec
     target: $${.:/component/deployment-directory}/src
   bsp: ${.:/bsp}
-  build-spec-directories: []
+  build-spec-directories:
+  - $${/pkg/source/rtems-v6.2:/directory}/spec/build
   build-uids:
-  - /build/cpukit/librtemscpu
+  - /cpukit/librtemscpu
   copyrights-by-license: {}
   directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6.2-current
   directory-state-type: repository-subset
