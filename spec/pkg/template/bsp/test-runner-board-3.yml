@@ -1,0 +1,32 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+attribute-actions: []
+attributes:
+  enabled-by: true
+  links:
+  - hash: null
+    name: component
+    role: input
+    uid: component
+  - hash: null
+    name: redirection-target
+    role: input
+    uid: /pkg/test-runner/board-3
+  - hash: null
+    name: test-runner
+    role: input-to
+    uid: /pkg/deployment/run
+  params:
+    test-runner-type: board-3
+  pkg-type: redirection
+  type: pkg
+copyrights:
+- Copyright (C) 2024, 2026 embedded brains GmbH & Co. KG
+enabled-by:
+- target/board-3
+- target/board-3-qual-only
+links:
+- role: add-package-template
+  uid: component
+pkg-type: template
+template-type: inline-item
+type: pkg
