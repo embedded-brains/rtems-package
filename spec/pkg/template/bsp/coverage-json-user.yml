@@ -46,7 +46,7 @@ attributes:
     params:
       gcda-sub-directory: $${.:/component/arch}/$${.:/component/bsp}$${.:/component/config:dash}-qual-only-coverage
     role: make
-    uid: ../../../make/gcovr
+    uid: /pkg/make/gcovr
   - name: html
     role: output
     uid: coverage-html-user

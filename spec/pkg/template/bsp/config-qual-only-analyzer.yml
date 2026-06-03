@@ -61,7 +61,7 @@ attributes:
   - hash: null
     name: member
     role: input-to
-    uid: ../../../deployment/archive
+    uid: /pkg/deployment/archive
   params: {}
   pkg-type: directory-state
   type: pkg
