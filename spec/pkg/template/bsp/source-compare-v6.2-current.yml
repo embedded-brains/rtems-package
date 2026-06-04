@@ -14,8 +14,31 @@ attributes:
   directory: ${.:/component/build-directory}/${.:/component/arch}-${.:/bsp}${.:/config:dash}-source-compare-v6.2-current
   directory-state-type: repository-subset
   enabled-by: true
-  enabled-set-extension: []
-  extra-files: []
+  enabled-set-extension:
+  - enable: INSTALL_LEGACY_MAKEFILES
+    enabled-by: true
+  extra-files:
+  - bsps/shared/doxygen.h
+  - bsps/shared/cache/cacheimpl.h
+  - bsps/shared/dev/clock/clockimpl.h
+  - bsps/sparc/shared/doxygen.h
+  - cpukit/compiler-rt/lib/builtins/int_div_impl.inc
+  - cpukit/compiler-rt/lib/builtins/int_endianness.h
+  - cpukit/compiler-rt/lib/builtins/int_lib.h
+  - cpukit/compiler-rt/lib/builtins/int_types.h
+  - cpukit/compiler-rt/lib/builtins/int_util.h
+  - cpukit/doxygen.h
+  - cpukit/doxygen/appl-config.h
+  - cpukit/doxygen/build.h
+  - cpukit/doxygen/hash-algorithms.h
+  - cpukit/doxygen/mainpage.h
+  - cpukit/doxygen/top-level-groups.h
+  - cpukit/libc/string/local.h
+  - cpukit/libmisc/cpuuse/cpuuseimpl.h
+  - cpukit/score/cpu/sparc/syscall.h
+  - cpukit/score/src/opt_compat.h
+  - cpukit/score/src/opt_ffclock.h
+  - cpukit/score/src/opt_ntp.h
   files: []
   hash: null
   include-test-header: false
