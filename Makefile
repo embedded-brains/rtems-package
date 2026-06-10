@@ -44,7 +44,7 @@ package-update: | prepare
 	uv run specupdateperf --spec-directories config/$(PACKAGE_NAME) modules/rtems/spec --lazy /target/sparc/$(PACKAGE_NAME)/sis/perf-default         $(PREFIX)/doc/sparc/$(PACKAGE_NAME)/uni/test-logs/*-simulator.json
 
 package-clean:
-	if test -d $(PREFIX) && test -z "$(GIT_OPTIONS)" ; then cd $(PREFIX) && git clean -xdf . && git co . ; fi
+	if test -d $(PREFIX) && test -z "$(GIT_OPTIONS)" ; then cd $(PREFIX) && git clean -xdf . && git checkout . ; fi
 
 package-remove:
 	rm -rf $(PREFIX)
