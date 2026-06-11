@@ -14,15 +14,15 @@ description:
 key: simulator
 links:
 - role: proxy-member
-  uid: ../../simulator
+  uid: /target/simulator
 - role: requirement-refinement
-  uid: ../gr740
+  uid: ../soc
 - role: test-timeouts
-  uid: sis/test-timeouts
+  uid: test-timeouts
 - role: performance-runtime-limits-provider
-  uid: sis/perf-default
+  uid: perf-default
 - role: performance-runtime-limits-provider
-  uid: sis/perf-smp
+  uid: perf-smp
 - role: verification-provider
   uid: /verification/test-failures/default
 - role: verification-provider
