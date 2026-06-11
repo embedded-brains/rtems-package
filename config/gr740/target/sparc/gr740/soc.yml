@@ -5,7 +5,7 @@ enabled-by: sparc/gr740
 links:
 - role: requirement-refinement
   uid: /req/target
-non-functional-type: quality
+non-functional-type: design
 rationale: null
 references: []
 requirement-type: non-functional
