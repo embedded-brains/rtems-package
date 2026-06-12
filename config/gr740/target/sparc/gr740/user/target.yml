@@ -10,8 +10,6 @@ key: simulator
 links:
 - role: proxy-member
   uid: /target/user
-- role: requirement-refinement
-  uid: ../soc
 - role: test-timeouts
   uid: test-timeouts
 - role: performance-runtime-limits-provider
