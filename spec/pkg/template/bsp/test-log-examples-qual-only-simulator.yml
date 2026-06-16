@@ -5,10 +5,7 @@ attributes:
   destination-directory: ${.:/documentation-directory}/test-logs
   destination-file: examples-qual-only-simulator.json
   directory: ${.:/component/workspace-directory}/test-logs
-  enabled-by:
-    and:
-    - RTEMS_QUAL
-    - target/simulator
+  enabled-by: true
   links:
   - hash: null
     name: component
@@ -53,7 +50,10 @@ attributes:
   workspace-type: test-log
 copyrights:
 - Copyright (C) 2020, 2024 embedded brains GmbH & Co. KG
-enabled-by: true
+enabled-by:
+  and:
+  - RTEMS_QUAL
+  - target/simulator
 links:
 - role: add-package-template
   uid: component
