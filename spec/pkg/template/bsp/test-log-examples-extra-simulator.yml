@@ -5,7 +5,7 @@ attributes:
   destination-directory: ${.:/documentation-directory}/test-logs
   destination-file: examples-extra-simulator.json
   directory: ${.:/component/workspace-directory}/test-logs
-  enabled-by: target/simulator
+  enabled-by: true
   links:
   - hash: null
     name: component
@@ -50,7 +50,7 @@ attributes:
   workspace-type: test-log
 copyrights:
 - Copyright (C) 2020, 2024 embedded brains GmbH & Co. KG
-enabled-by: true
+enabled-by: target/simulator
 links:
 - role: add-package-template
   uid: component
